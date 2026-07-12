@@ -214,8 +214,8 @@ h4 {
 /* Hero Section */
 .hero {
   padding: 140px 0 80px;
-  background: #ffffff url("/static/images/banner-section-1.png") no-repeat right
-    center;
+  background: #ffffff url("/agape_food/static/images/banner-section-1.png")
+    no-repeat right center;
   background-size: cover;
   position: relative;
   overflow: hidden;
