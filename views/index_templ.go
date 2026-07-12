@@ -9,7 +9,7 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
-	"github.com/dev-networldasia/dspgos/gos/templates"
+	"landing-page/pkg/templates"
 	"landing-page/views/layouts"
 )
 
