@@ -14,6 +14,10 @@ run: gen ## Run the server locally with live reload/generation
 build: gen ## Build the production binary
 	GOOS=darwin GOARCH=arm64 go build -o landingpage main.go
 
-clean: ## Clean generated templ files and binary
+static: gen ## Build static HTML and assets into dist/ for static hosting
+	go run cmd/build_static/main.go
+
+clean: ## Clean generated templ files, binary, and static dist
 	rm -f landingpage
+	rm -rf dist
 	find . -name "*_templ.go" -type f -delete

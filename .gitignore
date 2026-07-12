@@ -19,3 +19,7 @@ nwa_landingpage
 
 # System files
 .DS_Store
+
+# Local build output directories
+dist/
+
