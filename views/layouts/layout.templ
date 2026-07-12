@@ -34,12 +34,12 @@ templ Layout(title string) {
                         </div>
                     </a>
                     <ul class="nav-links">
-                        <li><a href="#hero">Trang chủ</a></li>
-                        <li><a href="#solutions">Dịch vụ</a></li>
-                        <li><a href="#audit">Quy trình</a></li>
-                        <li><a href="#why-choose">Về chúng tôi</a></li>
-                        <li><a href="#menus">Thực đơn</a></li>
-                        <li><a href="#contact">Liên hệ</a></li>
+                        <li><a href="#hero" data-nav="hero">Trang chủ</a></li>
+                        <li><a href="#solutions" data-nav="solutions">Dịch vụ</a></li>
+                        <li><a href="#audit" data-nav="audit">Quy trình</a></li>
+                        <li><a href="#why-choose" data-nav="why-choose">Về chúng tôi</a></li>
+                        <li><a href="#menus" data-nav="menus">Thực đơn</a></li>
+                        <li><a href="#contact" data-nav="contact">Liên hệ</a></li>
                     </ul>
                     <div class="nav-actions">
                         <a href="https://zalo.me/0586758758" target="_blank" class="btn-zalo">
@@ -60,6 +60,33 @@ templ Layout(title string) {
                             Gọi ngay
                         </a>
                     </div>
+                    <!-- Hamburger button (mobile only) -->
+                    <button id="hamburger-btn" class="hamburger-btn" aria-label="Mở menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </nav>
+            <!-- Mobile Drawer Overlay -->
+            <div id="mobile-overlay" class="mobile-overlay"></div>
+            <!-- Mobile Drawer -->
+            <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+                <div class="mobile-drawer-header">
+                    <div class="logo-title">AGAPE <span>FOOD</span></div>
+                    <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Đóng menu">
+                        <i class="ph-bold ph-x" style="font-size: 22px;"></i>
+                    </button>
+                </div>
+                <ul class="mobile-nav-links">
+                    <li><a href="#hero" data-nav="hero">Trang chủ</a></li>
+                    <li><a href="#solutions" data-nav="solutions">Dịch vụ</a></li>
+                    <li><a href="#audit" data-nav="audit">Quy trình</a></li>
+                    <li><a href="#why-choose" data-nav="why-choose">Về chúng tôi</a></li>
+                    <li><a href="#menus" data-nav="menus">Thực đơn</a></li>
+                    <li><a href="#contact" data-nav="contact">Liên hệ</a></li>
+                </ul>
+                <div class="mobile-drawer-actions">
+                    <a href="https://zalo.me/0586758758" target="_blank" class="btn-zalo" style="width: 100%; justify-content: center;">Nhấn Zalo nhận báo giá</a>
+                    <a href="tel:0586758758" class="btn-call" style="width: 100%; justify-content: center;">Gọi Hotline</a>
                 </div>
             </nav>
 
@@ -142,6 +169,66 @@ templ Layout(title string) {
                     </div>
                 </div>
             </footer>
+            <!-- Scroll-spy + Mobile Hamburger -->
+            <script>
+                (function () {
+                    // === Scroll-spy ===
+                    const navLinks = document.querySelectorAll('[data-nav]');
+                    const sectionIds = [...new Set(Array.from(navLinks).map(a => a.getAttribute('data-nav')))];
+                    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+                    function setActive(id) {
+                        navLinks.forEach(a => {
+                            a.classList.toggle('active', a.getAttribute('data-nav') === id);
+                        });
+                    }
+
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) setActive(entry.target.id);
+                            });
+                        },
+                        { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+                    );
+
+                    sections.forEach(sec => observer.observe(sec));
+                    if (sections.length) setActive(sections[0].id);
+
+                    // === Mobile Hamburger Drawer ===
+                    const hamburgerBtn = document.getElementById('hamburger-btn');
+                    const mobileDrawer = document.getElementById('mobile-drawer');
+                    const mobileOverlay = document.getElementById('mobile-overlay');
+                    const closeBtn = document.getElementById('mobile-close-btn');
+
+                    function openDrawer() {
+                        mobileDrawer.classList.add('open');
+                        mobileOverlay.style.display = 'block';
+                        setTimeout(() => mobileOverlay.classList.add('active'), 10);
+                        hamburgerBtn.classList.add('open');
+                        hamburgerBtn.setAttribute('aria-expanded', 'true');
+                        document.body.style.overflow = 'hidden';
+                    }
+
+                    function closeDrawer() {
+                        mobileDrawer.classList.remove('open');
+                        mobileOverlay.classList.remove('active');
+                        hamburgerBtn.classList.remove('open');
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                        setTimeout(() => { mobileOverlay.style.display = 'none'; }, 300);
+                    }
+
+                    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openDrawer);
+                    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+                    if (mobileOverlay) mobileOverlay.addEventListener('click', closeDrawer);
+
+                    // Close drawer when a mobile nav link is tapped
+                    document.querySelectorAll('.mobile-nav-links a').forEach(a => {
+                        a.addEventListener('click', closeDrawer);
+                    });
+                })();
+            </script>
         </body>
     </html>
 }
