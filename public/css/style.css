@@ -2167,3 +2167,232 @@ details.faq-item[open] summary.faq-question::after {
     font-size: 32px;
   }
 }
+
+/* === Testimonials Section === */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background-color: var(--bg-light);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  right: 24px;
+  font-size: 80px;
+  font-family: serif;
+  color: var(--accent);
+  opacity: 0.08;
+  line-height: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  border-color: rgba(11, 114, 45, 0.1);
+  background-color: #ffffff;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.testimonial-stars i {
+  color: #ffb800;
+  font-size: 16px;
+}
+
+.testimonial-quote {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.testimonial-user {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 20px;
+}
+
+.user-avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.user-avatar-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.user-avatar-initials {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.user-avatar-initials.blue {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.user-avatar-initials.green {
+  background: linear-gradient(135deg, var(--accent) 0%, #15b85a 100%);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.user-title {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* === Client Logos Section === */
+.clients-section-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 35px;
+  opacity: 0.8;
+}
+
+.clients-logo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px 60px;
+}
+
+.client-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  opacity: 0.55;
+  filter: grayscale(1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.client-logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.08);
+}
+
+.client-logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  user-select: none;
+}
+
+/* Specific stylized mock logos */
+.client-logo-text.bold {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  color: #005691; /* Knauf Blue */
+  font-weight: 900;
+}
+
+.client-logo-text.serif {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #d11e32; /* Lotte Red */
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.client-logo-text.spacer {
+  font-family: 'Inter', sans-serif;
+  color: #e60012; /* Denso Red */
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.client-logo-text.round {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  color: #2b8c57; /* Kizuna Green */
+  font-weight: 800;
+}
+
+.client-logo-text.modern {
+  font-family: 'Inter', sans-serif;
+  color: #0f2c59; /* Panasonic Navy */
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.client-logo-text.bold.italic {
+  font-family: 'Inter', sans-serif;
+  color: #2b3b8c; /* CJ Navy */
+  font-weight: 900;
+  font-style: italic;
+  position: relative;
+}
+
+/* Dots decoration for CJ logo */
+.client-logo-text.bold.italic::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #f7b500;
+  margin-left: 2px;
+  box-shadow: 6px -4px 0 #e02020, 12px -1px 0 #60c020;
+  vertical-align: middle;
+}
