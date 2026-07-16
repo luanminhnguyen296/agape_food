@@ -297,19 +297,40 @@ templ Index() {
 					<h2>Sẵn sàng hồ sơ phục vụ Customer Audit, Supplier Audit và các tiêu chuẩn quốc tế</h2>
 					<p>Với các doanh nghiệp xuất khẩu, nhà máy FDI hoặc đơn vị có khách hàng từ EU, US, Nhật Bản, Hàn Quốc…, việc kiểm soát nhà cung cấp suất ăn là một phần quan trọng trong quá trình đánh giá. Agape Foods xây dựng hệ thống hồ sơ đầy đủ để hỗ trợ doanh nghiệp khi có yêu cầu kiểm tra từ khách hàng, tập đoàn quốc tế hoặc tổ chức chứng nhận.</p>
 					<div class="audit-standards">
-						<span class="standard-tag">ISO 22000</span>
-						<span class="standard-tag">FSSC 22000</span>
-						<span class="standard-tag">BRCGS</span>
-						<span class="standard-tag">SQF</span>
-						<span class="standard-tag">Customer Audit</span>
-						<span class="standard-tag">Supplier Audit</span>
-						<span class="standard-tag">Food Safety Compliance</span>
-						<span class="standard-tag">Traceability Documents</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/iso-22000.png") } alt="ISO 22000" class="tag-icon"/>
+							<span>ISO 22000</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-fssc.png") } alt="FSSC 22000" class="tag-icon"/>
+							<span>FSSC 22000</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-brcs.png") } alt="BRCGS" class="tag-icon"/>
+							<span>BRCGS</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-sqf.png") } alt="SQF" class="tag-icon"/>
+							<span>SQF</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-customer.png") } alt="Customer Audit" class="tag-icon"/>
+							<span>Customer Audit</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-supplier-audit.png") } alt="Supplier Audit" class="tag-icon"/>
+							<span>Supplier Audit</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-food-safety-complance.png") } alt="Food Safety Compliance" class="tag-icon"/>
+							<span>Food Safety Compliance</span>
+						</span>
+						<span class="standard-tag">
+							<img src={ templates.AssetURL("/static/images/icon-food-safety.png") } alt="Traceability Documents" class="tag-icon"/>
+							<span>Traceability Documents</span>
+						</span>
 					</div>
-					<p class="audit-note-small">
-						<i class="ph-bold ph-info" style="color: var(--accent); margin-right: 4px;"></i>
-						Agape Foods hỗ trợ chuẩn bị và cung cấp hồ sơ phục vụ các kỳ đánh giá theo yêu cầu của khách hàng/doanh nghiệp.
-					</p>
+					<p class="audit-note-small"><i class="ph-bold ph-info" style="color: var(--accent);"></i>Agape Foods hỗ trợ chuẩn bị và cung cấp hồ sơ phục vụ các kỳ đánh giá theo yêu cầu của khách hàng/doanh nghiệp.</p>
 				</div>
 			</div>
 		</section>
@@ -461,32 +482,141 @@ templ Index() {
 						</div>
 					</div>
 					<!-- Right: 6 Image Grid Showcase -->
-					<div class="value-showcase-grid">
-						<div class="showcase-item large">
-							<img src={ templates.AssetURL("/static/images/bep-trung-tam.png") } alt="Bếp trung tâm"/>
-							<div class="showcase-label">Bếp trung tâm</div>
-						</div>
-						<div class="showcase-item">
-							<img src={ templates.AssetURL("/static/images/khu-che-bien.png") } alt="Khu chế biến"/>
-							<div class="showcase-label">Khu chế biến</div>
-						</div>
-						<div class="showcase-item">
-							<img src={ templates.AssetURL("/static/images/canteen-nha-may.png") } alt="Canteen tại nhà máy"/>
-							<div class="showcase-label">Canteen tại nhà máy</div>
-						</div>
-						<div class="showcase-item large">
-							<img src={ templates.AssetURL("/static/images/suat-an-mau.png") } alt="Suất ăn mẫu"/>
-							<div class="showcase-label">Suất ăn mẫu</div>
-						</div>
-						<div class="showcase-item">
-							<img src={ templates.AssetURL("/static/images/car.png") } alt="Xe giao hàng"/>
-							<div class="showcase-label">Xe giao hàng</div>
-						</div>
-						<div class="showcase-item portrait">
-							<img src={ templates.AssetURL("/static/images/giay-chung-nhan-an-toan.png") } alt="Hồ sơ chứng nhận"/>
-							<div class="showcase-label">Hồ sơ & chứng nhận</div>
+					<!-- Right: Vertical Slider Showcase -->
+					<div class="showcase-slider-wrapper">
+						<div class="showcase-slider-container" id="showcaseSliderContainer">
+							<div class="showcase-slider-track" id="showcaseSliderTrack">
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/bep-trung-tam.png', 'Bếp trung tâm')">
+									<img src={ templates.AssetURL("/static/images/bep-trung-tam.png") } alt="Bếp trung tâm"/>
+									<div class="showcase-slide-label">Bếp trung tâm</div>
+								</div>
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/khu-che-bien.png', 'Khu chế biến')">
+									<img src={ templates.AssetURL("/static/images/khu-che-bien.png") } alt="Khu chế biến"/>
+									<div class="showcase-slide-label">Khu chế biến</div>
+								</div>
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/canteen-nha-may.png', 'Canteen tại nhà máy')">
+									<img src={ templates.AssetURL("/static/images/canteen-nha-may.png") } alt="Canteen tại nhà máy"/>
+									<div class="showcase-slide-label">Canteen tại nhà máy</div>
+								</div>
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/car.png', 'Xe giao hàng')">
+									<img src={ templates.AssetURL("/static/images/car.png") } alt="Xe giao hàng"/>
+									<div class="showcase-slide-label">Xe giao hàng</div>
+								</div>
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/giay-chung-nhan-an-toan.png', 'Hồ sơ & chứng nhận')">
+									<img src={ templates.AssetURL("/static/images/giay-chung-nhan-an-toan.png") } alt="Hồ sơ chứng nhận"/>
+									<div class="showcase-slide-label">Hồ sơ & chứng nhận</div>
+								</div>
+								<div class="showcase-slide-item" onclick="openShowcaseModal('/static/images/suat-an-mau.png', 'Suất ăn mẫu')">
+									<img src={ templates.AssetURL("/static/images/suat-an-mau.png") } alt="Suất ăn mẫu"/>
+									<div class="showcase-slide-label">Suất ăn mẫu</div>
+								</div>
+							</div>
+							<div class="showcase-slider-dots" id="showcaseSliderDots">
+								<span class="slider-dot active" onclick="setShowcaseSlide(0)"></span>
+								<span class="slider-dot" onclick="setShowcaseSlide(1)"></span>
+								<span class="slider-dot" onclick="setShowcaseSlide(2)"></span>
+								<span class="slider-dot" onclick="setShowcaseSlide(3)"></span>
+								<span class="slider-dot" onclick="setShowcaseSlide(4)"></span>
+								<span class="slider-dot" onclick="setShowcaseSlide(5)"></span>
+							</div>
+							<!-- Navigation Controls -->
+							<button class="showcase-slider-prev" onclick="moveShowcaseSlide(-1)" type="button" aria-label="Previous slide">
+								<i class="ph-bold ph-caret-left"></i>
+							</button>
+							<button class="showcase-slider-next" onclick="moveShowcaseSlide(1)" type="button" aria-label="Next slide">
+								<i class="ph-bold ph-caret-right"></i>
+							</button>
 						</div>
 					</div>
+					<!-- Detail Modal -->
+					<div id="showcaseModal" class="showcase-modal" onclick="closeShowcaseModal()">
+						<span class="showcase-modal-close" onclick="closeShowcaseModal()">&times;</span>
+						<div class="showcase-modal-content" onclick="event.stopPropagation()">
+							<img id="showcaseModalImg" src="" alt="Giấy chứng nhận / Quy trình"/>
+							<div id="showcaseModalCaption" class="showcase-modal-caption"></div>
+						</div>
+					</div>
+					<script>
+						(function() {
+							let currentSlide = 0;
+							const totalSlides = 6;
+							const track = document.getElementById('showcaseSliderTrack');
+							const dots = document.querySelectorAll('#showcaseSliderDots .slider-dot');
+							let autoplayInterval;
+
+							function updateSlider() {
+								if (!track) return;
+								track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+								dots.forEach((dot, index) => {
+									if (index === currentSlide) {
+										dot.classList.add('active');
+									} else {
+										dot.classList.remove('active');
+									}
+								});
+							}
+
+							window.setShowcaseSlide = function(index) {
+								currentSlide = index;
+								updateSlider();
+								resetAutoplay();
+							}
+
+							window.moveShowcaseSlide = function(direction) {
+								currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+								updateSlider();
+								resetAutoplay();
+							}
+
+							function nextSlide() {
+								currentSlide = (currentSlide + 1) % totalSlides;
+								updateSlider();
+							}
+
+							function startAutoplay() {
+								autoplayInterval = setInterval(nextSlide, 3000);
+							}
+
+							function resetAutoplay() {
+								clearInterval(autoplayInterval);
+								startAutoplay();
+							}
+
+							const container = document.getElementById('showcaseSliderContainer');
+							if (container) {
+								container.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+								container.addEventListener('mouseleave', startAutoplay);
+							}
+
+							const modal = document.getElementById('showcaseModal');
+							const modalImg = document.getElementById('showcaseModalImg');
+							const modalCaption = document.getElementById('showcaseModalCaption');
+
+							window.openShowcaseModal = function(imgSrc, caption) {
+								if (!modal || !modalImg || !modalCaption) return;
+								modalImg.src = imgSrc;
+								modalCaption.innerText = caption;
+								modal.classList.add('active');
+								document.body.style.overflow = 'hidden';
+								clearInterval(autoplayInterval);
+							}
+
+							window.closeShowcaseModal = function() {
+								if (!modal) return;
+								modal.classList.remove('active');
+								document.body.style.overflow = '';
+								startAutoplay();
+							}
+
+							document.addEventListener('keydown', (e) => {
+								if (e.key === 'Escape') {
+									closeShowcaseModal();
+								}
+							});
+
+							startAutoplay();
+						})();
+					</script>
 				</div>
 			</div>
 		</section>
