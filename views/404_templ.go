@@ -43,13 +43,13 @@ func NotFound() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"error-section\"><div class=\"container\"><div class=\"error-container\"><span class=\"error-badge\" style=\"background: rgba(255, 123, 0, 0.1); border-color: #ff7b00; color: #ff7b00;\">Lỗi 404</span><h1 class=\"error-title\" style=\"background: linear-gradient(135deg, #ff7b00, #00e676); -webkit-background-clip: text; -webkit-text-fill-color: transparent;\">404</h1><h2 class=\"error-subtitle\">Trang Không Tồn Tại</h2><p class=\"error-desc\">Đường dẫn bạn truy cập hiện tại không khả dụng hoặc đã bị thay đổi. Vui lòng quay trở lại Trang chủ.</p><a href=\"/\" class=\"btn-primary\" style=\"background: linear-gradient(135deg, #ffae00, #00e676); color: #000; font-weight: 700;\">Quay lại Trang chủ</a></div></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- SEO: noindex for 404 error pages to avoid crawl budget waste --> <meta name=\"robots\" content=\"noindex, nofollow\"><section class=\"error-section\"><div class=\"container\"><div class=\"error-container\"><span class=\"error-badge\" style=\"background: rgba(255, 123, 0, 0.1); border-color: #ff7b00; color: #ff7b00;\">Lỗi 404</span><!-- h1: main descriptive content for screen readers & SEO --><h1 class=\"error-subtitle\">Trang Không Tồn Tại</h1><!-- Decorative 404 number, visually prominent but not primary heading --><p class=\"error-title\" role=\"presentation\" aria-hidden=\"true\" style=\"background: linear-gradient(135deg, #ff7b00, #00e676); -webkit-background-clip: text; -webkit-text-fill-color: transparent;\">404</p><p class=\"error-desc\">Đường dẫn bạn truy cập hiện tại không khả dụng hoặc đã bị thay đổi. Vui lòng quay trở lại Trang chủ.</p><a href=\"/\" class=\"btn-primary\" style=\"background: linear-gradient(135deg, #ffae00, #00e676); color: #000; font-weight: 700;\">Quay lại Trang chủ</a></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layouts.Layout("404 Không tìm thấy trang | Agape Food").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layouts.Layout("Trang Không Tồn Tại (404) | Agape Food").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
