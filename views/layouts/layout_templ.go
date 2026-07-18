@@ -131,7 +131,7 @@ func Layout(title string, lang string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<meta property=\"og:image\" content=\"https://agape-food.com/static/images/banner-section-1.png\"><meta property=\"og:image:width\" content=\"1200\"><meta property=\"og:image:height\" content=\"630\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<meta property=\"og:image\" content=\"https://agape-food.com/static/images/canteen-nha-may.png\"><meta property=\"og:image:alt\" content=\"Bếp ăn công nghiệp Agape Food – Suất ăn nhà máy tại Long An\"><meta property=\"og:image:width\" content=\"1200\"><meta property=\"og:image:height\" content=\"630\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -153,7 +153,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 50, Col: 45}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 51, Col: 45}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -166,20 +166,20 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(t.MetaDesc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 51, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 52, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\"><meta name=\"twitter:image\" content=\"https://agape-food.com/static/images/banner-section-1.png\"><!-- ============ STRUCTURED DATA – LocalBusiness ============ --><script type=\"application/ld+json\">\n            {\n              \"@context\": \"https://schema.org\",\n              \"@type\": \"FoodEstablishment\",\n              \"name\": \"Agape Food – Suất Ăn Công Nghiệp\",\n              \"alternateName\": \"Công ty CP Agape Long An\",\n              \"url\": \"https://agape-food.com\",\n              \"logo\": \"https://agape-food.com/static/images/logo.jpg\",\n              \"image\": \"https://agape-food.com/static/images/banner-section-1.png\",\n              \"description\": \"Cung cấp suất ăn công nghiệp, suất ăn văn phòng, canteen nhà máy đạt chuẩn an toàn thực phẩm, hỗ trợ Customer Audit và Supplier Audit tại Long An.\",\n              \"telephone\": \"+84586758758\",\n              \"email\": \"ceo@agape-food.com\",\n              \"priceRange\": \"$$\",\n              \"servesCuisine\": \"Vietnamese\",\n              \"address\": {\n                \"@type\": \"PostalAddress\",\n                \"streetAddress\": \"Lô C10, Đường số 14, KCN Long Hậu 3\",\n                \"addressLocality\": \"Cần Giuộc\",\n                \"addressRegion\": \"Long An\",\n                \"addressCountry\": \"VN\"\n              },\n              \"geo\": {\n                \"@type\": \"GeoCoordinates\",\n                \"latitude\": \"10.5831\",\n                \"longitude\": \"106.6258\"\n              },\n              \"openingHoursSpecification\": {\n                \"@type\": \"OpeningHoursSpecification\",\n                \"dayOfWeek\": [\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"],\n                \"opens\": \"06:00\",\n                \"closes\": \"18:00\"\n              },\n              \"sameAs\": [\n                \"https://zalo.me/0586758758\",\n                \"https://facebook.com\"\n              ]\n            }\n            </script><!-- Favicon --><link rel=\"shortcut icon\" href=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\"><meta name=\"twitter:image\" content=\"https://agape-food.com/static/images/canteen-nha-may.png\"><meta name=\"twitter:image:alt\" content=\"Bếp ăn công nghiệp Agape Food – Suất ăn nhà máy tại Long An\"><!-- ============ STRUCTURED DATA – LocalBusiness ============ --><script type=\"application/ld+json\">\n            {\n              \"@context\": \"https://schema.org\",\n              \"@type\": \"FoodEstablishment\",\n              \"name\": \"Agape Food – Suất Ăn Công Nghiệp\",\n              \"alternateName\": \"Công ty CP Agape Long An\",\n              \"url\": \"https://agape-food.com\",\n              \"logo\": \"https://agape-food.com/static/images/logo.jpg\",\n              \"image\": \"https://agape-food.com/static/images/banner-section-1.png\",\n              \"description\": \"Cung cấp suất ăn công nghiệp, suất ăn văn phòng, canteen nhà máy đạt chuẩn an toàn thực phẩm, hỗ trợ Customer Audit và Supplier Audit tại Long An.\",\n              \"telephone\": \"+84586758758\",\n              \"email\": \"ceo@agape-food.com\",\n              \"priceRange\": \"$$\",\n              \"servesCuisine\": \"Vietnamese\",\n              \"address\": {\n                \"@type\": \"PostalAddress\",\n                \"streetAddress\": \"Lô C10, Đường số 14, KCN Long Hậu 3\",\n                \"addressLocality\": \"Cần Giuộc\",\n                \"addressRegion\": \"Long An\",\n                \"addressCountry\": \"VN\"\n              },\n              \"geo\": {\n                \"@type\": \"GeoCoordinates\",\n                \"latitude\": \"10.5831\",\n                \"longitude\": \"106.6258\"\n              },\n              \"openingHoursSpecification\": {\n                \"@type\": \"OpeningHoursSpecification\",\n                \"dayOfWeek\": [\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\"],\n                \"opens\": \"06:00\",\n                \"closes\": \"18:00\"\n              },\n              \"sameAs\": [\n                \"https://zalo.me/0586758758\",\n                \"https://facebook.com\"\n              ]\n            }\n            </script><!-- Favicon --><link rel=\"shortcut icon\" href=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var9 templ.SafeURL
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinURLErrs(templates.AssetURL("/static/images/logo.jpg"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 93, Col: 81}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 95, Col: 81}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {
@@ -192,7 +192,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var10 templ.SafeURL
 		templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinURLErrs(templates.AssetURL("/static/css/style.css"))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 98, Col: 59}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 100, Col: 59}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 		if templ_7745c5c3_Err != nil {
@@ -210,7 +210,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var11 string
 			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/logo.jpg"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 106, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 108, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
@@ -223,7 +223,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var12 string
 			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(t.LogoSubtitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 109, Col: 51}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 111, Col: 51}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
@@ -241,7 +241,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var13 string
 			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/logo.jpg"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 114, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 116, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
@@ -254,7 +254,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var14 string
 			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(t.LogoSubtitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 117, Col: 51}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 119, Col: 51}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
@@ -272,7 +272,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavHome)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 122, Col: 53}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 124, Col: 53}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
@@ -285,7 +285,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavServices)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 123, Col: 67}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 125, Col: 67}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -298,7 +298,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var17 string
 		templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavProcess)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 124, Col: 62}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 126, Col: 62}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 		if templ_7745c5c3_Err != nil {
@@ -311,7 +311,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var18 string
 		templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavWhyChoose)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 125, Col: 70}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 127, Col: 70}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 		if templ_7745c5c3_Err != nil {
@@ -324,7 +324,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavMenu)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 126, Col: 55}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 128, Col: 55}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -337,7 +337,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var20 string
 		templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavContact)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 127, Col: 62}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 129, Col: 62}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 		if templ_7745c5c3_Err != nil {
@@ -350,7 +350,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var21 string
 		templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnZalo)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 141, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 143, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 		if templ_7745c5c3_Err != nil {
@@ -363,7 +363,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnCallNow)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 145, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 147, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -423,7 +423,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(t.MobileMenuClose)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 178, Col: 90}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 180, Col: 90}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
@@ -436,7 +436,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var24 string
 		templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavHome)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 183, Col: 52}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 185, Col: 52}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 		if templ_7745c5c3_Err != nil {
@@ -449,7 +449,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavServices)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 184, Col: 66}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 186, Col: 66}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
@@ -462,7 +462,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavProcess)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 185, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 187, Col: 61}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -475,7 +475,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavWhyChoose)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 186, Col: 69}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 188, Col: 69}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
@@ -488,7 +488,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var28 string
 		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavMenu)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 187, Col: 54}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 189, Col: 54}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {
@@ -501,7 +501,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var29 string
 		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(t.NavContact)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 188, Col: 61}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 190, Col: 61}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 		if templ_7745c5c3_Err != nil {
@@ -514,7 +514,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var30 string
 		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnZaloQuote)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 191, Col: 137}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 193, Col: 137}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 		if templ_7745c5c3_Err != nil {
@@ -527,7 +527,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var31 string
 		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnCallHotline)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 192, Col: 125}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 194, Col: 125}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 		if templ_7745c5c3_Err != nil {
@@ -600,7 +600,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var32 string
 			templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/logo.jpg"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 221, Col: 64}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 223, Col: 64}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 			if templ_7745c5c3_Err != nil {
@@ -613,7 +613,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var33 string
 			templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(t.LogoSubtitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 224, Col: 52}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 226, Col: 52}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
 			if templ_7745c5c3_Err != nil {
@@ -631,7 +631,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var34 string
 			templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/logo.jpg"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 229, Col: 64}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 231, Col: 64}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
 			if templ_7745c5c3_Err != nil {
@@ -644,7 +644,7 @@ func Layout(title string, lang string) templ.Component {
 			var templ_7745c5c3_Var35 string
 			templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(t.LogoSubtitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 232, Col: 52}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 234, Col: 52}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
 			if templ_7745c5c3_Err != nil {
@@ -662,7 +662,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var36 string
 		templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(t.FooterDesc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 236, Col: 43}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 238, Col: 43}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
 		if templ_7745c5c3_Err != nil {
@@ -675,7 +675,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var37 string
 		templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(t.FooterContactTitle)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 239, Col: 53}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 241, Col: 53}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var37))
 		if templ_7745c5c3_Err != nil {
@@ -688,7 +688,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var38 string
 		templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.JoinStringErrs(t.FooterBranch)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 245, Col: 56}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 247, Col: 56}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var38))
 		if templ_7745c5c3_Err != nil {
@@ -701,7 +701,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var39 string
 		templ_7745c5c3_Var39, templ_7745c5c3_Err = templ.JoinStringErrs(t.FooterConnectTitle)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 262, Col: 53}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 264, Col: 53}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var39))
 		if templ_7745c5c3_Err != nil {
@@ -714,7 +714,7 @@ func Layout(title string, lang string) templ.Component {
 		var templ_7745c5c3_Var40 string
 		templ_7745c5c3_Var40, templ_7745c5c3_Err = templ.JoinStringErrs(t.FooterRights)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 294, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/layouts/layout.templ`, Line: 296, Col: 25}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var40))
 		if templ_7745c5c3_Err != nil {
