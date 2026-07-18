@@ -12,10 +12,7 @@ run: gen ## Run the server locally with live reload/generation
 	go run main.go
 
 build: gen ## Build the production binary
-	GOOS=darwin GOARCH=arm64 go build -o landingpage main.go
-
-static: gen ## Build static HTML and assets into dist/ for static hosting
-	go run cmd/build_static/main.go
+	GOOS=linux GOARCH=amd64 go build -o ldp_agape_food main.go
 
 clean: ## Clean generated templ files, binary, and static dist
 	rm -f landingpage

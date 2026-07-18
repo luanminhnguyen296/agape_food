@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"landing-page/views"
 
 	"github.com/a-h/templ"
@@ -40,7 +41,11 @@ func main() {
 			
 			if code == fiber.StatusNotFound {
 				c.Status(fiber.StatusNotFound)
-				return render(c, views.NotFound())
+				lang := "vi"
+				if strings.HasPrefix(c.Path(), "/en") {
+					lang = "en"
+				}
+				return render(c, views.NotFound(lang))
 			}
 
 			c.Status(code)
@@ -60,7 +65,11 @@ func main() {
 
 	// Routes
 	app.Get("/", func(c *fiber.Ctx) error {
-		return render(c, views.Index())
+		return render(c, views.Index("vi"))
+	})
+
+	app.Get("/en", func(c *fiber.Ctx) error {
+		return render(c, views.Index("en"))
 	})
 
 	// Fallback 404 handler for routes that are not registered
