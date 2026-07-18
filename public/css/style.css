@@ -214,7 +214,7 @@ h4 {
 /* Hero Section */
 .hero {
   padding: 140px 0 80px;
-  background: #ffffff url("/agape_food/static/images/banner-section-1.png")
+  background: #ffffff url("/agape_food//static/images/banner-section-1.png")
     no-repeat right center;
   background-size: cover;
   position: relative;
@@ -2338,11 +2338,19 @@ details.faq-item[open] summary.faq-question::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  opacity: 0.55;
+  height: 80px;
+  opacity: 0.6;
   filter: grayscale(1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+.client-logo-item img {
+  max-height: 80px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .client-logo-item:hover {
