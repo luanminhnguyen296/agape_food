@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 	"io"
+	"landing-page/views"
 	"log"
 	"os"
 	"path/filepath"
-	"landing-page/views"
 
 	"github.com/joho/godotenv"
 )
@@ -21,18 +21,31 @@ func main() {
 		log.Fatalf("Failed to create dist directory: %v", err)
 	}
 
-	// Create output index.html file
+	// Render the Templ Index component directly to index.html file (Vietnamese version)
 	f, err := os.Create("dist/index.html")
 	if err != nil {
 		log.Fatalf("Failed to create index.html: %v", err)
 	}
-	defer f.Close()
-
-	// Render the Templ Index component directly to index.html file
 	ctx := context.Background()
-	if err := views.Index().Render(ctx, f); err != nil {
-		log.Fatalf("Failed to render index template: %v", err)
+	if err := views.Index("vi").Render(ctx, f); err != nil {
+		f.Close()
+		log.Fatalf("Failed to render index template (vi): %v", err)
 	}
+	f.Close()
+
+	// Create dist/en directory and render English version to dist/en/index.html
+	if err := os.MkdirAll("dist/en", 0755); err != nil {
+		log.Fatalf("Failed to create dist/en directory: %v", err)
+	}
+	fe, err := os.Create("dist/en/index.html")
+	if err != nil {
+		log.Fatalf("Failed to create dist/en/index.html: %v", err)
+	}
+	if err := views.Index("en").Render(ctx, fe); err != nil {
+		fe.Close()
+		log.Fatalf("Failed to render index template (en): %v", err)
+	}
+	fe.Close()
 
 	// Copy public folder resources to dist/static
 	if err := copyDir("public", "dist/static"); err != nil {
