@@ -359,6 +359,21 @@ h4 {
   border-color: var(--accent-hover);
 }
 
+.btn-call.btn-call--red {
+  color: #e02020;
+  border-color: #e02020;
+}
+
+.btn-call.btn-call--red:hover {
+  background-color: #e02020;
+  color: #ffffff;
+  border-color: #e02020;
+}
+
+.cta-group {
+  display: flex;
+  gap: 15px;
+}
 /* Custom SVG mapping to color match Zalo logo inside green CTA button */
 .hero-content .btn-zalo.green svg path:nth-child(1) {
   fill: none !important;
@@ -1317,9 +1332,9 @@ details.faq-item[open] summary.faq-question::after {
   align-items: center;
   gap: 8px;
   padding: 13px 28px;
-  background-color: transparent;
+  background-color: #e02020;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid #e02020;
   font-weight: 700;
   font-size: 15px;
   border-radius: 12px;
@@ -1328,8 +1343,8 @@ details.faq-item[open] summary.faq-question::after {
 }
 
 .btn-banner-call:hover {
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #c01a1a;
+  border-color: #c01a1a;
 }
 
 .chef-banner-img {
@@ -2344,40 +2359,40 @@ details.faq-item[open] summary.faq-question::after {
 
 /* Specific stylized mock logos */
 .client-logo-text.bold {
-  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-family: "Montserrat", "Inter", sans-serif;
   color: #005691; /* Knauf Blue */
   font-weight: 900;
 }
 
 .client-logo-text.serif {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: "Playfair Display", "Georgia", serif;
   color: #d11e32; /* Lotte Red */
   font-weight: 800;
   letter-spacing: 1px;
 }
 
 .client-logo-text.spacer {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: #e60012; /* Denso Red */
   font-weight: 900;
   letter-spacing: 3px;
 }
 
 .client-logo-text.round {
-  font-family: 'Outfit', 'Inter', sans-serif;
+  font-family: "Outfit", "Inter", sans-serif;
   color: #2b8c57; /* Kizuna Green */
   font-weight: 800;
 }
 
 .client-logo-text.modern {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: #0f2c59; /* Panasonic Navy */
   font-weight: 700;
   font-size: 21px;
 }
 
 .client-logo-text.bold.italic {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: #2b3b8c; /* CJ Navy */
   font-weight: 900;
   font-style: italic;
@@ -2393,6 +2408,8 @@ details.faq-item[open] summary.faq-question::after {
   border-radius: 50%;
   background-color: #f7b500;
   margin-left: 2px;
-  box-shadow: 6px -4px 0 #e02020, 12px -1px 0 #60c020;
+  box-shadow:
+    6px -4px 0 #e02020,
+    12px -1px 0 #60c020;
   vertical-align: middle;
 }

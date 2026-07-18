@@ -9,11 +9,12 @@ import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
 import (
+	"landing-page/pkg/i18n"
 	"landing-page/pkg/templates"
 	"landing-page/views/layouts"
 )
 
-func Index() templ.Component {
+func Index(lang string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -34,6 +35,7 @@ func Index() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
+		t := i18n.Get(lang)
 		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -46,390 +48,2334 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section id=\"hero\" class=\"hero\"><div class=\"container hero-grid\"><div class=\"hero-content\"><span class=\"badge-clean\"><i class=\"ph-fill ph-leaf\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> CLEAN FOOD – STRONG BUSINESS</span><h1 class=\"hero-title\">SUẤT ĂN AN TOÀN <span>DOANH NGHIỆP VỮNG VÀNG</span></h1><p class=\"hero-desc\">Agape Foods cung cấp suất ăn cho nhà máy, văn phòng, trường học và doanh nghiệp FDI với quy trình vận hành chuẩn, hồ sơ ATTP đầy đủ, hỗ trợ khách hàng trong các kỳ Customer Audit, Supplier Audit theo yêu cầu đối tác EU, US và quốc tế.</p><div class=\"hero-checklist-horizontal\"><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-shield-check\"></i></div><span class=\"hero-check-label\">ATTP<br>đầy đủ</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-cooking-pot\"></i></div><span class=\"hero-check-label\">Bếp 1 chiều<br>chuẩn hóa</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-clipboard-text\"></i></div><span class=\"hero-check-label\">Kiểm thực<br>3 bước</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-clock\"></i></div><span class=\"hero-check-label\">Giao đúng giờ<br>cam kết</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-folder\"></i></div><span class=\"hero-check-label\">Hỗ trợ<br>Audit</span></div></div><div class=\"cta-group\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo green\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> Nhấn Zalo nhận báo giá</a> <a href=\"tel:0586758758\" class=\"btn-call\"><i class=\"ph-bold ph-phone\" style=\"font-size: 16px;\"></i> Gọi Hotline</a></div></div><div class=\"hero-visual\"><div class=\"hero-img-container\"><!-- High quality tray mockup food image --><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section id=\"hero\" class=\"hero\"><div class=\"container hero-grid\"><div class=\"hero-content\"><span class=\"badge-clean\"><i class=\"ph-fill ph-leaf\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/banner-section-1.png"))
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(t.HeroBadge)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 75, Col: 74}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 18, Col: 19}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" alt=\"Suất ăn dinh dưỡng Agape Food\"></div><!-- Floating Badges --><div class=\"badge-float-circle top-right\"><div class=\"badge-float-icon\"><i class=\"ph-fill ph-leaf\"></i></div><span class=\"badge-float-val\">100%</span> <span class=\"badge-float-txt\">Nguyên liệu<br>tự nhiên</span></div><div class=\"badge-float-circle bottom-right\"><div class=\"badge-float-icon\"><i class=\"ph-fill ph-users\"></i></div><span class=\"badge-float-val\">500+</span> <span class=\"badge-float-txt\">Khách hàng<br>tin tưởng</span></div></div></div></section><!-- Pain Points Section --> <section class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title text-uppercase\" style=\"max-width: 800px; margin: 0 auto; line-height: 1.4;\">Doanh nghiệp gặp khó khăn gì khi <span>quản lý suất ăn?</span></h2></div><div class=\"pain-points-grid\"><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-truck\"></i></div><p>Nhà cung cấp giao trễ,<br>món ăn không ổn định</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-smiley-sad\"></i></div><p>Nhân viên phản ánh<br>chất lượng bữa ăn</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-arrows-clockwise\"></i></div><p>Menu lặp lại,<br>thiếu đa dạng</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-magnifying-glass\"></i></div><p>Khó kiểm soát<br>nguồn gốc nguyên liệu</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-folder\"></i></div><p>Thiếu hồ sơ khi có<br>đoàn kiểm tra hoặc Audit</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-globe\"></i></div><p>Không biết cần chuẩn bị gì<br>khi khách hàng EU, US đánh giá</p></div></div><div class=\"pain-conclusion\"><p><strong>Kết luận:</strong> Agape Foods không chỉ cung cấp suất ăn, mà còn đồng hành cùng doanh nghiệp trong việc kiểm soát chất lượng, an toàn thực phẩm và hồ sơ tuân thủ.</p></div></div></section><!-- Solutions Section --> <section id=\"solutions\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">Giải pháp suất ăn <span>phù hợp cho từng mô hình doanh nghiệp</span></h2><p class=\"section-desc\">Đáp ứng hoàn hảo mọi nhu cầu của các nhóm đối tác từ nhà máy, văn phòng đến trường học.</p></div><div class=\"solutions-grid\"><!-- Card 1 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</span><h1 class=\"hero-title\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var4 string
-			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(t.HeroTitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 160, Col: 71}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 20, Col: 41}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" alt=\"Suất ăn công nghiệp\"></div><div class=\"solution-content\"><div class=\"solution-badge\">1</div><h3>Suất ăn công nghiệp</h3><p>Cung cấp số lượng lớn suất ăn đạt chuẩn an toàn vệ sinh thực phẩm, tiếp thêm năng lượng cho công nhân sản xuất.</p></div></div><!-- Card 2 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var5 string
-			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-van-phong.png"))
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(t.HeroTitleSpan)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 171, Col: 76}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 20, Col: 66}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" alt=\"Suất ăn văn phòng\"></div><div class=\"solution-content\"><div class=\"solution-badge letter\">2</div><h3>Suất ăn văn phòng</h3><p>Bữa ăn thanh đạm, dinh dưỡng cân đối và trình bày đẹp mắt cho khối nhân sự văn phòng năng động.</p></div></div><!-- Card 3 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</span></h1><p class=\"hero-desc\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var6 string
-			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-che-bien-san.png"))
+			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(t.HeroDesc)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 182, Col: 79}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 21, Col: 38}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "\" alt=\"Suất ăn chế biến sẵn\"></div><div class=\"solution-content\"><div class=\"solution-badge\">3</div><h3>Suất ăn chế biến sẵn</h3><p>Chế biến sẵn và đóng gói tiện lợi, bảo quản tối ưu để phân phối nhanh cho các ca kíp trực tuyến.</p></div></div><!-- Card 4 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</p><div class=\"hero-checklist-horizontal\"><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-shield-check\"></i></div><span class=\"hero-check-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.HeroCheckATTP).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-cooking-pot\"></i></div><span class=\"hero-check-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.HeroCheckBep).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-clipboard-text\"></i></div><span class=\"hero-check-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.HeroCheckKiemThuc).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-clock\"></i></div><span class=\"hero-check-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.HeroCheckGiaoHang).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</span></div><div class=\"hero-check-item-col\"><div class=\"hero-check-circle\"><i class=\"ph-bold ph-folder\"></i></div><span class=\"hero-check-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.HeroCheckAudit).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</span></div></div><div class=\"cta-group\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo green\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var7 string
-			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
+			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnZaloQuote)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 193, Col: 74}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 76, Col: 23}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\" alt=\"Canteen tại nhà máy\"></div><div class=\"solution-content\"><div class=\"solution-badge letter\">4</div><h3>Canteen tại nhà máy</h3><p>Thiết lập và quản lý vận hành canteen trực tiếp tại nhà máy đối tác với quy trình phục vụ chuẩn hóa.</p></div></div><!-- Card 5 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</a> <a href=\"tel:0586758758\" class=\"btn-call btn-call--red\"><i class=\"ph-bold ph-phone\" style=\"font-size: 16px;\"></i> ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var8 string
-			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-cho-chuyen-gia.png"))
+			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(t.BtnCallHotline)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 204, Col: 81}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 80, Col: 25}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "\" alt=\"Suất ăn cho chuyên gia\"></div><div class=\"solution-content\"><div class=\"solution-badge\">5</div><h3>Suất ăn cho chuyên gia</h3><p>Thực đơn cao cấp chuẩn nhà hàng phục vụ cho chuyên gia nước ngoài và các đối tác VIP.</p></div></div><!-- Card 6 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</a></div></div><div class=\"hero-visual\"><div class=\"hero-img-container\"><!-- High quality tray mockup food image --><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var9 string
-			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-hoc-sinh.png"))
+			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/banner-section-1.png"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 215, Col: 75}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 87, Col: 74}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "\" alt=\"Suất ăn trường học\"></div><div class=\"solution-content\"><div class=\"solution-badge\">6</div><h3>Suất ăn trường học</h3><p>Cân đối dưỡng chất khoa học giúp học sinh phát triển thể trạng tốt nhất, an toàn và dễ ăn.</p></div></div></div><div style=\"text-align: center;\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo\" style=\"padding: 14px 28px;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> Nhấn Zalo để được tư vấn mô hình phù hợp</a></div></div></section><!-- Process Section --> <section id=\"process\" class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">Quy trình hợp tác <span>rõ ràng – nhanh chóng – chuyên nghiệp</span></h2><p class=\"section-desc\">Chúng tôi tối ưu hóa từng bước hợp tác để tiết kiệm thời gian và mang lại sự an tâm tuyệt đối cho quý doanh nghiệp.</p></div><div class=\"timeline-wrapper\" style=\"max-width: 800px; margin: 40px auto 0;\"><div class=\"timeline\"><div class=\"timeline-step\"><div class=\"timeline-number\">1</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-chat-centered-text\"></i>Nhận thông tin</h4><p>Tiếp nhận nhu cầu, quy mô suất ăn và các tiêu chuẩn đặc thù của doanh nghiệp.</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">2</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-clipboard-text\"></i>Khảo sát nhu cầu</h4><p>Đội ngũ chuyên gia khảo sát canteen, bếp ăn và khảo sát khẩu vị của cán bộ công nhân viên.</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">3</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-cooking-pot\"></i>Dùng thử miễn phí</h4><p>Hỗ trợ cung cấp các suất ăn dùng thử miễn phí để kiểm định chất lượng và đóng góp ý kiến.</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">4</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-handshake\"></i>Ký kết hợp đồng</h4><p>Thống nhất thực đơn, đơn giá, thời gian phục vụ và hoàn thiện các cam kết dịch vụ pháp lý.</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">5</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-shield-check\"></i>Thực hiện dịch vụ theo cam kết</h4><p>Vận hành bếp ăn theo quy trình 1 chiều chuẩn hóa, cung cấp đầy đủ hồ sơ ATTP cho mọi kỳ Audit.</p></div></div></div></div></div></section><!-- Audit Section --> <section id=\"audit\" class=\"section-padding\"><div class=\"container audit-layout-new\"><div class=\"audit-intro-new\"><span class=\"badge-clean\" style=\"margin-bottom: 16px;\"><i class=\"ph-fill ph-shield-check\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> ĐỒNG HÀNH CÙNG DOANH NGHIỆP TRONG CÁC KỲ AUDIT</span><h2>Sẵn sàng hồ sơ phục vụ Customer Audit, Supplier Audit và các tiêu chuẩn quốc tế</h2><p>Với các doanh nghiệp xuất khẩu, nhà máy FDI hoặc đơn vị có khách hàng từ EU, US, Nhật Bản, Hàn Quốc…, việc kiểm soát nhà cung cấp suất ăn là một phần quan trọng trong quá trình đánh giá. Agape Foods xây dựng hệ thống hồ sơ đầy đủ để hỗ trợ doanh nghiệp khi có yêu cầu kiểm tra từ khách hàng, tập đoàn quốc tế hoặc tổ chức chứng nhận.</p><div class=\"audit-standards\"><span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\" alt=\"Suất ăn dinh dưỡng Agape Food\"></div><!-- Floating Badges --><div class=\"badge-float-circle top-right\"><div class=\"badge-float-icon\"><i class=\"ph-fill ph-leaf\"></i></div><span class=\"badge-float-val\">100%</span> <span class=\"badge-float-txt\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.BadgeFloatNuyenLieu).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "</span></div><div class=\"badge-float-circle bottom-right\"><div class=\"badge-float-icon\"><i class=\"ph-fill ph-users\"></i></div><span class=\"badge-float-val\">500+</span> <span class=\"badge-float-txt\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.BadgeFloatKhachHang).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</span></div></div></div></section><!-- Pain Points Section --> <section class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title text-uppercase\" style=\"max-width: 800px; margin: 0 auto; line-height: 1.4;\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var10 string
-			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/iso-22000.png"))
+			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainTitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 301, Col: 68}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 115, Col: 119}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "\" alt=\"ISO 22000\" class=\"tag-icon\"> <span>ISO 22000</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "<span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var11 string
-			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-fssc.png"))
+			templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainTitleSpan)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 305, Col: 68}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 115, Col: 144}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\" alt=\"FSSC 22000\" class=\"tag-icon\"> <span>FSSC 22000</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</span></h2></div><div class=\"pain-points-grid\"><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-truck\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var12 string
-			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-brcs.png"))
+			templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard1)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 309, Col: 68}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 122, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "\" alt=\"BRCGS\" class=\"tag-icon\"> <span>BRCGS</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-smiley-sad\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var13 string
-			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-sqf.png"))
+			templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard2)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 313, Col: 67}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 129, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "\" alt=\"SQF\" class=\"tag-icon\"> <span>SQF</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-arrows-clockwise\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var14 string
-			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-customer.png"))
+			templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard3)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 317, Col: 72}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 136, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "\" alt=\"Customer Audit\" class=\"tag-icon\"> <span>Customer Audit</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-magnifying-glass\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var15 string
-			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-supplier-audit.png"))
+			templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard4)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 321, Col: 78}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 143, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "\" alt=\"Supplier Audit\" class=\"tag-icon\"> <span>Supplier Audit</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-folder\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var16 string
-			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-food-safety-complance.png"))
+			templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard5)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 325, Col: 85}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 150, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "\" alt=\"Food Safety Compliance\" class=\"tag-icon\"> <span>Food Safety Compliance</span></span> <span class=\"standard-tag\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "</p></div><span class=\"pain-separator\">×</span><div class=\"pain-card\"><div class=\"pain-icon-wrapper\"><i class=\"ph-bold ph-globe\"></i></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var17 string
-			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-food-safety.png"))
+			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(t.PainCard6)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 329, Col: 75}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 157, Col: 22}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "\" alt=\"Traceability Documents\" class=\"tag-icon\"> <span>Traceability Documents</span></span></div><p class=\"audit-note-small\"><i class=\"ph-bold ph-info\" style=\"color: var(--accent);\"></i>Agape Foods hỗ trợ chuẩn bị và cung cấp hồ sơ phục vụ các kỳ đánh giá theo yêu cầu của khách hàng/doanh nghiệp.</p></div></div></section><!-- Documents System Section --> <section id=\"documents\" class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">Hệ thống hồ sơ <span>Agape Foods có thể cung cấp</span></h2><p class=\"section-desc\">Chúng tôi chuẩn bị sẵn sàng, minh bạch các bộ hồ sơ chất lượng để hỗ trợ mọi quy trình kiểm tra của doanh nghiệp.</p></div><div class=\"docs-grid\"><!-- Group 1: Hồ sơ pháp lý --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-file-text\"></i><h4>Hồ sơ pháp lý</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>Giấy phép đăng ký kinh doanh</li><li><i class=\"ph-bold ph-check\"></i>Giấy chứng nhận đủ điều kiện ATTP</li><li><i class=\"ph-bold ph-check\"></i>Biên bản kiểm tra gần nhất của cơ quan quản lý nhà nước</li></ul></div><!-- Group 2: Hồ sơ truy xuất nguồn gốc --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-magnifying-glass\"></i><h4>Hồ sơ truy xuất nguồn gốc</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>Hợp đồng nguyên liệu đầu vào</li><li><i class=\"ph-bold ph-check\"></i>Giấy đủ điều kiện ATTP của đối tác cung cấp nguyên liệu</li><li><i class=\"ph-bold ph-check\"></i>Hóa đơn mua hàng chứng minh nguồn nguyên liệu từ NCC đã ký hợp đồng</li></ul></div><!-- Group 3: Hồ sơ chất lượng & vận hành --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-shield-check\"></i><h4>Hồ sơ chất lượng & vận hành</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>Giấy kiểm định nguồn nước</li><li><i class=\"ph-bold ph-check\"></i>Giấy kiểm định thực phẩm định kỳ</li><li><i class=\"ph-bold ph-check\"></i>Hồ sơ kiểm thực 3 bước theo quy định Bộ Y tế</li><li><i class=\"ph-bold ph-check\"></i>Quy trình bếp 1 chiều</li></ul></div><!-- Group 4: Hồ sơ nhân sự --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-users\"></i><h4>Hồ sơ nhân sự</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>Hồ sơ khám sức khỏe nhân viên</li><li><i class=\"ph-bold ph-check\"></i>Giấy chứng nhận tập huấn kiến thức ATTP</li><li><i class=\"ph-bold ph-check\"></i>Giấy chứng nhận hoàn thành nghĩa vụ tài chính tại cơ quan BHXH</li></ul></div></div><div class=\"doc-highlight-banner\"><i class=\"ph-fill ph-sparkle\"></i> <span>Không chỉ bán suất ăn – Agape Foods giúp doanh nghiệp sẵn sàng khi có đoàn Audit.</span></div></div></section><!-- Why Choose Us / Value Proposition Section --> <section id=\"why-choose\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">Vì sao chọn <span>Agape Foods?</span></h2><p class=\"section-desc\">Khác biệt tạo nên thương hiệu uy tín hàng đầu trong lĩnh vực suất ăn công nghiệp.</p></div><div class=\"value-layout\"><!-- Left: 8 Icon Grid --><div class=\"value-grid-icons\"><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-leaf\"></i></div><div><h4>Nguyên liệu rõ nguồn gốc</h4><p>Liên kết trực tiếp nông trại đạt chuẩn VietGAP.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-bowl-food\"></i></div><div><h4>Thực đơn đa dạng, thay đổi định kỳ</h4><p>Hơn 200 món ăn thay đổi định kỳ không trùng lặp.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-users-three\"></i></div><div><h4>Đội ngũ bếp có kinh nghiệm</h4><p>Đầu bếp được đào tạo bài bản về an toàn thực phẩm.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-clock\"></i></div><div><h4>Giao đúng giờ</h4><p>Cam kết giờ ăn ổn định giúp doanh nghiệp tối ưu ca kíp.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-shield-check\"></i></div><div><h4>Kiểm thực 3 bước</h4><p>Quy trình giám sát khép kín trước khi phục vụ.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-lock-key\"></i></div><div><h4>Lưu mẫu thức ăn theo quy định</h4><p>Mẫu thức ăn được niêm phong lưu giữ 24h.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-file-text\"></i></div><div><h4>Hồ sơ ATTP đầy đủ</h4><p>Đầy đủ chứng nhận kiểm định nguồn nước, sức khỏe nhân viên.</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-buildings\"></i></div><div><h4>Hỗ trợ Audit cho doanh nghiệp FDI</h4><p>Chuẩn bị hồ sơ và hiện diện trực tiếp trong mọi kỳ đánh giá.</p></div></div></div><!-- Right: 6 Image Grid Showcase --><!-- Right: Vertical Slider Showcase --><div class=\"showcase-slider-wrapper\"><div class=\"showcase-slider-container\" id=\"showcaseSliderContainer\"><div class=\"showcase-slider-track\" id=\"showcaseSliderTrack\"><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/bep-trung-tam.png', 'Bếp trung tâm')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "</p></div></div><div class=\"pain-conclusion\"><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.PainConclusion).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "</p></div></div></section><!-- Solutions Section --> <section id=\"solutions\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var18 string
-			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/bep-trung-tam.png"))
+			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolTitle)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 490, Col: 74}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 171, Col: 43}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "\" alt=\"Bếp trung tâm\"><div class=\"showcase-slide-label\">Bếp trung tâm</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/khu-che-bien.png', 'Khu chế biến')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "<span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var19 string
-			templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
+			templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolTitleSpan)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 494, Col: 73}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 171, Col: 67}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "\" alt=\"Khu chế biến\"><div class=\"showcase-slide-label\">Khu chế biến</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/canteen-nha-may.png', 'Canteen tại nhà máy')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "</span></h2><p class=\"section-desc\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var20 string
-			templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
+			templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolDesc)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 498, Col: 76}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 172, Col: 40}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "\" alt=\"Canteen tại nhà máy\"><div class=\"showcase-slide-label\">Canteen tại nhà máy</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/car.png', 'Xe giao hàng')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "</p></div><div class=\"solutions-grid\"><!-- Card 1 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var21 string
-			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/car.png"))
+			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 502, Col: 64}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 178, Col: 71}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 20, "\" alt=\"Xe giao hàng\"><div class=\"showcase-slide-label\">Xe giao hàng</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/giay-chung-nhan-an-toan.png', 'Hồ sơ & chứng nhận')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "\" alt=\"Suất ăn công nghiệp\"></div><div class=\"solution-content\"><div class=\"solution-badge\">1</div><h3>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var22 string
-			templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/giay-chung-nhan-an-toan.png"))
+			templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard1Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 506, Col: 84}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 182, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 21, "\" alt=\"Hồ sơ chứng nhận\"><div class=\"showcase-slide-label\">Hồ sơ & chứng nhận</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/suat-an-mau.png', 'Suất ăn mẫu')\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "</h3><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var23 string
-			templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-mau.png"))
+			templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard1Desc)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 510, Col: 72}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 183, Col: 26}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 22, "\" alt=\"Suất ăn mẫu\"><div class=\"showcase-slide-label\">Suất ăn mẫu</div></div></div><div class=\"showcase-slider-dots\" id=\"showcaseSliderDots\"><span class=\"slider-dot active\" onclick=\"setShowcaseSlide(0)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(1)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(2)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(3)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(4)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(5)\"></span></div><!-- Navigation Controls --><button class=\"showcase-slider-prev\" onclick=\"moveShowcaseSlide(-1)\" type=\"button\" aria-label=\"Previous slide\"><i class=\"ph-bold ph-caret-left\"></i></button> <button class=\"showcase-slider-next\" onclick=\"moveShowcaseSlide(1)\" type=\"button\" aria-label=\"Next slide\"><i class=\"ph-bold ph-caret-right\"></i></button></div></div><!-- Detail Modal --><div id=\"showcaseModal\" class=\"showcase-modal\" onclick=\"closeShowcaseModal()\"><span class=\"showcase-modal-close\" onclick=\"closeShowcaseModal()\">&times;</span><div class=\"showcase-modal-content\" onclick=\"event.stopPropagation()\"><img id=\"showcaseModalImg\" src=\"\" alt=\"Giấy chứng nhận / Quy trình\"><div id=\"showcaseModalCaption\" class=\"showcase-modal-caption\"></div></div></div><script>\n\t\t\t\t\t\t(function() {\n\t\t\t\t\t\t\tlet currentSlide = 0;\n\t\t\t\t\t\t\tconst totalSlides = 6;\n\t\t\t\t\t\t\tconst track = document.getElementById('showcaseSliderTrack');\n\t\t\t\t\t\t\tconst dots = document.querySelectorAll('#showcaseSliderDots .slider-dot');\n\t\t\t\t\t\t\tlet autoplayInterval;\n\n\t\t\t\t\t\t\tfunction updateSlider() {\n\t\t\t\t\t\t\t\tif (!track) return;\n\t\t\t\t\t\t\t\ttrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';\n\t\t\t\t\t\t\t\tdots.forEach((dot, index) => {\n\t\t\t\t\t\t\t\t\tif (index === currentSlide) {\n\t\t\t\t\t\t\t\t\t\tdot.classList.add('active');\n\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\tdot.classList.remove('active');\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.setShowcaseSlide = function(index) {\n\t\t\t\t\t\t\t\tcurrentSlide = index;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t\tresetAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.moveShowcaseSlide = function(direction) {\n\t\t\t\t\t\t\t\tcurrentSlide = (currentSlide + direction + totalSlides) % totalSlides;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t\tresetAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction nextSlide() {\n\t\t\t\t\t\t\t\tcurrentSlide = (currentSlide + 1) % totalSlides;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction startAutoplay() {\n\t\t\t\t\t\t\t\tautoplayInterval = setInterval(nextSlide, 3000);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction resetAutoplay() {\n\t\t\t\t\t\t\t\tclearInterval(autoplayInterval);\n\t\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tconst container = document.getElementById('showcaseSliderContainer');\n\t\t\t\t\t\t\tif (container) {\n\t\t\t\t\t\t\t\tcontainer.addEventListener('mouseenter', () => clearInterval(autoplayInterval));\n\t\t\t\t\t\t\t\tcontainer.addEventListener('mouseleave', startAutoplay);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tconst modal = document.getElementById('showcaseModal');\n\t\t\t\t\t\t\tconst modalImg = document.getElementById('showcaseModalImg');\n\t\t\t\t\t\t\tconst modalCaption = document.getElementById('showcaseModalCaption');\n\n\t\t\t\t\t\t\twindow.openShowcaseModal = function(imgSrc, caption) {\n\t\t\t\t\t\t\t\tif (!modal || !modalImg || !modalCaption) return;\n\t\t\t\t\t\t\t\tmodalImg.src = imgSrc;\n\t\t\t\t\t\t\t\tmodalCaption.innerText = caption;\n\t\t\t\t\t\t\t\tmodal.classList.add('active');\n\t\t\t\t\t\t\t\tdocument.body.style.overflow = 'hidden';\n\t\t\t\t\t\t\t\tclearInterval(autoplayInterval);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.closeShowcaseModal = function() {\n\t\t\t\t\t\t\t\tif (!modal) return;\n\t\t\t\t\t\t\t\tmodal.classList.remove('active');\n\t\t\t\t\t\t\t\tdocument.body.style.overflow = '';\n\t\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tdocument.addEventListener('keydown', (e) => {\n\t\t\t\t\t\t\t\tif (e.key === 'Escape') {\n\t\t\t\t\t\t\t\t\tcloseShowcaseModal();\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t});\n\n\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t})();\n\t\t\t\t\t</script></div></div></section><!-- Menu / Diverse Food Showcase Section --> <section id=\"menus\" class=\"section-padding bg-light\"><div class=\"container menu-tab-layout\"><div class=\"menu-header-flex\"><div class=\"menu-tab-left\"><h2>Thiết kế thực đơn theo <span>nhu cầu & ngân sách</span></h2><p style=\"color: var(--text-secondary);\">Thực đơn được thiết kế thông minh, khoa học và luân phiên thay đổi mỗi ngày giúp công nhân viên luôn ngon miệng.</p></div><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo\" style=\"padding: 12px 24px; flex-shrink: 0;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> Nhấn Zalo nhận menu mẫu theo ngân sách</a></div><div class=\"menu-tab-grid\"><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "</p></div></div><!-- Card 2 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var24 string
-			templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
+			templ_7745c5c3_Var24, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-van-phong.png"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 648, Col: 71}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 189, Col: 76}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var24))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 23, "\" alt=\"Công nghiệp\"></div><div class=\"menu-card-title\"><h4>Công nghiệp</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 31, "\" alt=\"Suất ăn văn phòng\"></div><div class=\"solution-content\"><div class=\"solution-badge letter\">2</div><h3>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var25 string
-			templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-mau.png"))
+			templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard2Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 656, Col: 70}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 193, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 24, "\" alt=\"Văn phòng\"></div><div class=\"menu-card-title\"><h4>Văn phòng</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 32, "</h3><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var26 string
-			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-cho-chuyen-gia.png"))
+			templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard2Desc)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 664, Col: 81}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 194, Col: 26}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 25, "\" alt=\"Chuyên gia\"></div><div class=\"menu-card-title\"><h4>Chuyên gia</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 33, "</p></div></div><!-- Card 3 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var27 string
-			templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-hoc-sinh.png"))
+			templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-che-bien-san.png"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 672, Col: 75}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 200, Col: 79}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 26, "\" alt=\"Trường học\"></div><div class=\"menu-card-title\"><h4>Trường học</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 34, "\" alt=\"Suất ăn chế biến sẵn\"></div><div class=\"solution-content\"><div class=\"solution-badge\">3</div><h3>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var28 string
-			templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
+			templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard3Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 680, Col: 74}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 204, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 27, "\" alt=\"Theo ca kíp\"></div><div class=\"menu-card-title\"><h4>Theo ca / kíp</h4></div></div></div></div></section><!-- Testimonials Section --> <section id=\"testimonials\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><span class=\"badge-clean\"><i class=\"ph-fill ph-chat-circle-text\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> Ý KIẾN ĐỐI TÁC</span><h2 class=\"section-title\">Khách hàng <span>nói gì về chúng tôi?</span></h2><p class=\"section-desc\">Sự hài lòng và đồng hành lâu dài của các đối tác lớn, doanh nghiệp FDI là minh chứng rõ nhất cho chất lượng dịch vụ của Agape Foods.</p></div><div class=\"testimonials-grid\"><!-- Card 1: Knauf Việt Nam --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">\"Từ ngày chuyển sang đối tác Agape Foods, chúng tôi hoàn toàn yên tâm trong các kỳ kiểm tra của tập đoàn Knauf toàn cầu. Suất ăn luôn tươi ngon, nóng sốt và đầy đủ hồ sơ ATTP phục vụ Audit.\"</p><div class=\"testimonial-user\"><div class=\"user-avatar-img\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 35, "</h3><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var29 string
-			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/kh-1.png"))
+			templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard3Desc)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 713, Col: 64}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 205, Col: 26}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 28, "\" alt=\"Bà Nguyễn Thị Lan Anh\"></div><div class=\"user-info\"><h4 class=\"user-name\">Bà Nguyễn Thị Lan Anh</h4><p class=\"user-title\">Trưởng phòng Nhân sự - Knauf Việt Nam</p></div></div></div><!-- Card 2: Japanese Factory --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">\"Chúng tôi đánh giá cao quy trình kiểm thực 3 bước và lưu mẫu thức ăn nghiêm ngặt của Agape. Suất ăn đa dạng, hợp khẩu vị của cả các chuyên gia nước ngoài lẫn công nhân nhà máy.\"</p><div class=\"testimonial-user\"><div class=\"user-avatar-initials blue\"><span>KS</span></div><div class=\"user-info\"><h4 class=\"user-name\">Mr. Kenji Sato</h4><p class=\"user-title\">Giám đốc Vận hành - Nhà máy Kizuna</p></div></div></div><!-- Card 3: School --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">\"Dịch vụ suất ăn học đường của Agape Foods làm hài lòng cả ban giám hiệu và phụ huynh học sinh. Nguồn gốc nguyên liệu VietGAP minh bạch là lý do chúng tôi chọn đồng hành lâu dài.\"</p><div class=\"testimonial-user\"><div class=\"user-avatar-initials green\"><span>LH</span></div><div class=\"user-info\"><h4 class=\"user-name\">Bà Lê Thanh Hải</h4><p class=\"user-title\">Hiệu trưởng - Trường Tiểu học Việt Mỹ</p></div></div></div></div></div></section><!-- Clients Section --> <section id=\"clients\" class=\"section-padding bg-light\" style=\"padding: 60px 0; border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03);\"><div class=\"container\"><div class=\"clients-logo-wrapper\"><p class=\"clients-section-subtitle\" aria-label=\"Đối tác tiêu biểu của Agape Food\">ĐỒNG HÀNH CÙNG CÁC ĐỐI TÁC LỚN & DOANH NGHIỆP FDI</p><div class=\"clients-logo-grid\"><div class=\"client-logo-item\"><span class=\"client-logo-text bold\">KNAUF</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text serif\">LOTTE</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text spacer\">DENSO</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text round\">KIZUNA</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text modern\">Panasonic</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text bold italic\">CJ</span></div></div></div></div></section><!-- Commitments & FAQ Section --> <section class=\"section-padding\"><div class=\"container faq-grid\"><!-- Left: Commitments --><div><h3 class=\"commit-title\">Cam kết của Agape Foods</h3><div class=\"commit-list\"><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Không sử dụng thực phẩm không rõ nguồn gốc</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Thực hiện kiểm thực 3 bước</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Lưu mẫu thức ăn theo quy định</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Giao hàng đúng thời gian cam kết</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Phản hồi nhanh khi có góp ý từ người dùng</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Cung cấp hồ sơ khi doanh nghiệp cần phục vụ kiểm tra, Audit</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>Thực hiện đúng cam kết trong hợp đồng</p></div></div></div><!-- Right: Accordion FAQ --><div><h3 class=\"commit-title\">Câu hỏi thường gặp</h3><div class=\"faq-accordion\"><details class=\"faq-item\" open><summary class=\"faq-question\">Agape Foods nhận phục vụ từ bao nhiêu suất/ngày?</summary><div class=\"faq-answer\">Chúng tôi nhận cung cấp suất ăn từ quy mô 100 suất/ngày trở lên cho các doanh nghiệp, nhà máy, xí nghiệp tại khu vực Long An và lân cận.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có được dùng thử suất ăn miễn phí không?</summary><div class=\"faq-answer\">Có. Chúng tôi hỗ trợ phục vụ suất ăn dùng thử miễn phí từ 3-5 ngày để doanh nghiệp và người lao động đánh giá hương vị cũng như chất lượng phục vụ trước khi ký hợp đồng chính thức.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có thiết kế menu theo ngân sách không?</summary><div class=\"faq-answer\">Có, thực đơn sẽ được cân đối định lượng dinh dưỡng dựa trên ngân sách cụ thể của từng doanh nghiệp nhằm bảo đảm hiệu quả chi phí tốt nhất cho đối tác.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có phục vụ ca đêm hoặc nhiều ca sản xuất không?</summary><div class=\"faq-answer\">Có. Hệ thống bếp ăn của Agape Foods vận hành 24/7 để đáp ứng linh hoạt các ca kíp sản xuất và ca làm đêm của nhà máy.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có cung cấp hồ sơ ATTP và hồ sơ Audit không?</summary><div class=\"faq-answer\">Có. Chúng tôi bàn giao đầy đủ bộ hồ sơ pháp lý gồm giấy chứng nhận cơ sở đủ điều kiện ATTP, giấy kiểm định nguồn nước, nguồn gốc thực phẩm và các chứng nhận sức khỏe của nhân viên định kỳ.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có hỗ trợ khi khách hàng nước ngoài kiểm tra nhà máy không?</summary><div class=\"faq-answer\">Chúng tôi sẵn sàng cử nhân sự quản lý chất lượng trực tiếp tham gia cùng quý doanh nghiệp đón tiếp và giải trình hồ sơ khi có đoàn Audit từ đối tác nước ngoài.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có xuất hóa đơn VAT không?</summary><div class=\"faq-answer\">Tất cả các dịch vụ suất ăn công nghiệp của Agape Foods đều được cung cấp đầy đủ hóa đơn tài chính hợp lệ cho doanh nghiệp.</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">Có thể chế biến tại canteen của nhà máy không?</summary><div class=\"faq-answer\">Có. Tùy thuộc vào cơ sở hạ tầng của đối tác, chúng tôi có thể setup đội ngũ đầu bếp và nguyên liệu đến chế biến nóng trực tiếp tại bếp ăn của nhà máy.</div></details></div></div></div></section><!-- CTA Bottom Banner --> <section id=\"contact\" style=\"margin-top: 0;\"><div class=\"chef-banner\"><div class=\"chef-banner-food\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 36, "</p></div></div><!-- Card 4 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var30 string
-			templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-com-mau-elements.png"))
+			templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 875, Col: 78}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 211, Col: 74}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 29, "\" alt=\"Suất ăn Agape Food\"></div><div class=\"chef-banner-content\"><h2>ĐỐI TÁC SUẤT ĂN AN TOÀN – ỔN ĐỊNH – SẴN SÀNG HỒ SƠ AUDIT</h2><div class=\"chef-banner-btns\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-banner-zalo\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> Nhấn Zalo nhận báo giá</a> <a href=\"tel:0586758758\" class=\"btn-banner-call\"><i class=\"ph-bold ph-phone\" style=\"font-size: 18px;\"></i> Gọi Hotline</a></div></div><div class=\"chef-banner-img\"><img src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 37, "\" alt=\"Canteen tại nhà máy\"></div><div class=\"solution-content\"><div class=\"solution-badge letter\">4</div><h3>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var31 string
-			templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/cheefs.png"))
+			templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard4Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 900, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 215, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 30, "\" alt=\"Đầu bếp Agape Food chuyên nghiệp\"></div></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 38, "</h3><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var32 string
+			templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard4Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 216, Col: 26}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "</p></div></div><!-- Card 5 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var33 string
+			templ_7745c5c3_Var33, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-cho-chuyen-gia.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 222, Col: 81}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var33))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 40, "\" alt=\"Suất ăn cho chuyên gia\"></div><div class=\"solution-content\"><div class=\"solution-badge\">5</div><h3>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var34 string
+			templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard5Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 226, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 41, "</h3><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var35 string
+			templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard5Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 227, Col: 26}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 42, "</p></div></div><!-- Card 6 --><div class=\"solution-card\"><div class=\"solution-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var36 string
+			templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-hoc-sinh.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 233, Col: 75}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 43, "\" alt=\"Suất ăn trường học\"></div><div class=\"solution-content\"><div class=\"solution-badge\">6</div><h3>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var37 string
+			templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard6Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 237, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var37))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 44, "</h3><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var38 string
+			templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolCard6Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 238, Col: 26}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var38))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 45, "</p></div></div></div><div style=\"text-align: center;\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo\" style=\"padding: 14px 28px;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var39 string
+			templ_7745c5c3_Var39, templ_7745c5c3_Err = templ.JoinStringErrs(t.SolBtnZalo)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 254, Col: 20}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var39))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 46, "</a></div></div></section><!-- Process Section --> <section id=\"process\" class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var40 string
+			templ_7745c5c3_Var40, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 263, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var40))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 47, "<span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var41 string
+			templ_7745c5c3_Var41, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcTitleSpan)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 263, Col: 69}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var41))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "</span></h2><p class=\"section-desc\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var42 string
+			templ_7745c5c3_Var42, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 264, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var42))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 49, "</p></div><div class=\"timeline-wrapper\" style=\"max-width: 800px; margin: 40px auto 0;\"><div class=\"timeline\"><div class=\"timeline-step\"><div class=\"timeline-number\">1</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-chat-centered-text\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var43 string
+			templ_7745c5c3_Var43, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep1Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 271, Col: 75}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var43))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 50, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var44 string
+			templ_7745c5c3_Var44, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep1Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 272, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var44))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 51, "</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">2</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-clipboard-text\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var45 string
+			templ_7745c5c3_Var45, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep2Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 278, Col: 71}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var45))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 52, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var46 string
+			templ_7745c5c3_Var46, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep2Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 279, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var46))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 53, "</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">3</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-cooking-pot\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var47 string
+			templ_7745c5c3_Var47, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep3Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 285, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var47))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 54, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var48 string
+			templ_7745c5c3_Var48, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep3Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 286, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var48))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 55, "</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">4</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-handshake\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var49 string
+			templ_7745c5c3_Var49, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep4Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 292, Col: 66}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var49))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 56, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var50 string
+			templ_7745c5c3_Var50, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep4Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 293, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var50))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 57, "</p></div></div><div class=\"timeline-step\"><div class=\"timeline-number\">5</div><div class=\"timeline-desc\"><h4><i class=\"ph-fill ph-shield-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var51 string
+			templ_7745c5c3_Var51, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep5Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 299, Col: 69}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var51))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 58, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var52 string
+			templ_7745c5c3_Var52, templ_7745c5c3_Err = templ.JoinStringErrs(t.ProcStep5Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 300, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var52))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 59, "</p></div></div></div></div></div></section><!-- Audit Section --> <section id=\"audit\" class=\"section-padding\"><div class=\"container audit-layout-new\"><div class=\"audit-intro-new\"><span class=\"badge-clean\" style=\"margin-bottom: 16px;\"><i class=\"ph-fill ph-shield-check\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var53 string
+			templ_7745c5c3_Var53, templ_7745c5c3_Err = templ.JoinStringErrs(t.AuditBadge)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 313, Col: 20}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var53))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 60, "</span><h2>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var54 string
+			templ_7745c5c3_Var54, templ_7745c5c3_Err = templ.JoinStringErrs(t.AuditTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 315, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var54))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 61, "</h2><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var55 string
+			templ_7745c5c3_Var55, templ_7745c5c3_Err = templ.JoinStringErrs(t.AuditDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 316, Col: 21}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var55))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 62, "</p><div class=\"audit-standards\"><span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var56 string
+			templ_7745c5c3_Var56, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/iso-22000.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 319, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var56))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 63, "\" alt=\"ISO 22000\" class=\"tag-icon\"> <span>ISO 22000</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var57 string
+			templ_7745c5c3_Var57, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-fssc.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 323, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var57))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 64, "\" alt=\"FSSC 22000\" class=\"tag-icon\"> <span>FSSC 22000</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var58 string
+			templ_7745c5c3_Var58, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-brcs.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 327, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var58))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 65, "\" alt=\"BRCGS\" class=\"tag-icon\"> <span>BRCGS</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var59 string
+			templ_7745c5c3_Var59, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-sqf.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 331, Col: 67}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var59))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 66, "\" alt=\"SQF\" class=\"tag-icon\"> <span>SQF</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var60 string
+			templ_7745c5c3_Var60, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-customer.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 335, Col: 72}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var60))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 67, "\" alt=\"Customer Audit\" class=\"tag-icon\"> <span>Customer Audit</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var61 string
+			templ_7745c5c3_Var61, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-supplier-audit.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 339, Col: 78}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var61))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 68, "\" alt=\"Supplier Audit\" class=\"tag-icon\"> <span>Supplier Audit</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var62 string
+			templ_7745c5c3_Var62, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-food-safety-complance.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 343, Col: 85}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var62))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 69, "\" alt=\"Food Safety Compliance\" class=\"tag-icon\"> <span>Food Safety Compliance</span></span> <span class=\"standard-tag\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var63 string
+			templ_7745c5c3_Var63, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/icon-food-safety.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 347, Col: 75}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var63))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 70, "\" alt=\"Traceability Documents\" class=\"tag-icon\"> <span>Traceability Documents</span></span></div><p class=\"audit-note-small\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templ.Raw(t.AuditNoteSmall).Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 71, "</p></div></div></section><!-- Documents System Section --> <section id=\"documents\" class=\"section-padding bg-light\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var64 string
+			templ_7745c5c3_Var64, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 361, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var64))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 72, "<span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var65 string
+			templ_7745c5c3_Var65, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsTitleSpan)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 361, Col: 69}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var65))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 73, "</span></h2><p class=\"section-desc\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var66 string
+			templ_7745c5c3_Var66, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 362, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var66))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 74, "</p></div><div class=\"docs-grid\"><!-- Group 1: Hồ sơ pháp lý --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-file-text\"></i><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var67 string
+			templ_7745c5c3_Var67, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup1Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 369, Col: 30}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var67))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 75, "</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var68 string
+			templ_7745c5c3_Var68, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup1Item1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 372, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var68))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 76, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var69 string
+			templ_7745c5c3_Var69, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup1Item2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 373, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var69))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 77, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var70 string
+			templ_7745c5c3_Var70, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup1Item3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 374, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var70))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 78, "</li></ul></div><!-- Group 2: Hồ sơ truy xuất nguồn gốc --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-magnifying-glass\"></i><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var71 string
+			templ_7745c5c3_Var71, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup2Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 381, Col: 30}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var71))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 79, "</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var72 string
+			templ_7745c5c3_Var72, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup2Item1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 384, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var72))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 80, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var73 string
+			templ_7745c5c3_Var73, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup2Item2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 385, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var73))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 81, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var74 string
+			templ_7745c5c3_Var74, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup2Item3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 386, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var74))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 82, "</li></ul></div><!-- Group 3: Hồ sơ chất lượng & vận hành --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-shield-check\"></i><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var75 string
+			templ_7745c5c3_Var75, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup3Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 393, Col: 30}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var75))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 83, "</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var76 string
+			templ_7745c5c3_Var76, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup3Item1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 396, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var76))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 84, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var77 string
+			templ_7745c5c3_Var77, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup3Item2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 397, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var77))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 85, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var78 string
+			templ_7745c5c3_Var78, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup3Item3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 398, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var78))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 86, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var79 string
+			templ_7745c5c3_Var79, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup3Item4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 399, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var79))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 87, "</li></ul></div><!-- Group 4: Hồ sơ nhân sự --><div class=\"doc-card\"><div class=\"doc-card-header\"><i class=\"ph-bold ph-users\"></i><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var80 string
+			templ_7745c5c3_Var80, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup4Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 406, Col: 30}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var80))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 88, "</h4></div><ul class=\"doc-list\"><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var81 string
+			templ_7745c5c3_Var81, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup4Item1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 409, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var81))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 89, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var82 string
+			templ_7745c5c3_Var82, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup4Item2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 410, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var82))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 90, "</li><li><i class=\"ph-bold ph-check\"></i>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var83 string
+			templ_7745c5c3_Var83, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsGroup4Item3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 411, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var83))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 91, "</li></ul></div></div><div class=\"doc-highlight-banner\"><i class=\"ph-fill ph-sparkle\"></i> <span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var84 string
+			templ_7745c5c3_Var84, templ_7745c5c3_Err = templ.JoinStringErrs(t.DocsHighlight)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 417, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var84))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 92, "</span></div></div></section><!-- Why Choose Us / Value Proposition Section --> <section id=\"why-choose\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><h2 class=\"section-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var85 string
+			templ_7745c5c3_Var85, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 425, Col: 43}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var85))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 93, "<span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var86 string
+			templ_7745c5c3_Var86, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyTitleSpan)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 425, Col: 67}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var86))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 94, "</span></h2><p class=\"section-desc\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var87 string
+			templ_7745c5c3_Var87, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 426, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var87))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 95, "</p></div><div class=\"value-layout\"><!-- Left: 8 Icon Grid --><div class=\"value-grid-icons\"><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-leaf\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var88 string
+			templ_7745c5c3_Var88, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem1Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 436, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var88))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 96, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var89 string
+			templ_7745c5c3_Var89, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem1Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 437, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var89))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 97, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-bowl-food\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var90 string
+			templ_7745c5c3_Var90, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem2Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 445, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var90))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 98, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var91 string
+			templ_7745c5c3_Var91, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem2Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 446, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var91))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 99, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-users-three\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var92 string
+			templ_7745c5c3_Var92, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem3Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 454, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var92))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 100, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var93 string
+			templ_7745c5c3_Var93, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem3Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 455, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var93))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 101, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-clock\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var94 string
+			templ_7745c5c3_Var94, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem4Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 463, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var94))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 102, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var95 string
+			templ_7745c5c3_Var95, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem4Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 464, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var95))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 103, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-shield-check\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var96 string
+			templ_7745c5c3_Var96, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem5Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 472, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var96))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 104, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var97 string
+			templ_7745c5c3_Var97, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem5Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 473, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var97))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 105, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-lock-key\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var98 string
+			templ_7745c5c3_Var98, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem6Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 481, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var98))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 106, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var99 string
+			templ_7745c5c3_Var99, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem6Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 482, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var99))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 107, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-file-text\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var100 string
+			templ_7745c5c3_Var100, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem7Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 490, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var100))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 108, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var101 string
+			templ_7745c5c3_Var101, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem7Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 491, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var101))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 109, "</p></div></div><div class=\"value-icon-item\"><div class=\"value-icon-box\"><i class=\"ph-bold ph-buildings\"></i></div><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var102 string
+			templ_7745c5c3_Var102, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem8Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 499, Col: 29}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var102))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 110, "</h4><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var103 string
+			templ_7745c5c3_Var103, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhyItem8Desc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 500, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var103))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 111, "</p></div></div></div><!-- Right: Vertical Slider Showcase --><div class=\"showcase-slider-wrapper\"><div class=\"showcase-slider-container\" id=\"showcaseSliderContainer\"><div class=\"showcase-slider-track\" id=\"showcaseSliderTrack\"><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/bep-trung-tam.png', 'Bếp trung tâm')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var104 string
+			templ_7745c5c3_Var104, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/bep-trung-tam.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 509, Col: 74}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var104))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 112, "\" alt=\"Bếp trung tâm\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var105 string
+			templ_7745c5c3_Var105, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 510, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var105))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 113, "</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/khu-che-bien.png', 'Khu chế biến')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var106 string
+			templ_7745c5c3_Var106, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 513, Col: 73}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var106))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 114, "\" alt=\"Khu chế biến\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var107 string
+			templ_7745c5c3_Var107, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 514, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var107))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 115, "</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/canteen-nha-may.png', 'Canteen tại nhà máy')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var108 string
+			templ_7745c5c3_Var108, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 517, Col: 76}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var108))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 116, "\" alt=\"Canteen tại nhà máy\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var109 string
+			templ_7745c5c3_Var109, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 518, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var109))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 117, "</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/car.png', 'Xe giao hàng')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var110 string
+			templ_7745c5c3_Var110, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/car.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 521, Col: 64}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var110))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 118, "\" alt=\"Xe giao hàng\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var111 string
+			templ_7745c5c3_Var111, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 522, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var111))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 119, "</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/giay-chung-nhan-an-toan.png', 'Hồ sơ & chứng nhận')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var112 string
+			templ_7745c5c3_Var112, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/giay-chung-nhan-an-toan.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 525, Col: 84}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var112))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 120, "\" alt=\"Hồ sơ chứng nhận\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var113 string
+			templ_7745c5c3_Var113, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide5)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 526, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var113))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 121, "</div></div><div class=\"showcase-slide-item\" onclick=\"openShowcaseModal('/static/images/suat-an-mau.png', 'Suất ăn mẫu')\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var114 string
+			templ_7745c5c3_Var114, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-mau.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 529, Col: 72}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var114))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 122, "\" alt=\"Suất ăn mẫu\"><div class=\"showcase-slide-label\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var115 string
+			templ_7745c5c3_Var115, templ_7745c5c3_Err = templ.JoinStringErrs(t.WhySlide6)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 530, Col: 56}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var115))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 123, "</div></div></div><div class=\"showcase-slider-dots\" id=\"showcaseSliderDots\"><span class=\"slider-dot active\" onclick=\"setShowcaseSlide(0)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(1)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(2)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(3)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(4)\"></span> <span class=\"slider-dot\" onclick=\"setShowcaseSlide(5)\"></span></div><!-- Navigation Controls --><button class=\"showcase-slider-prev\" onclick=\"moveShowcaseSlide(-1)\" type=\"button\" aria-label=\"Previous slide\"><i class=\"ph-bold ph-caret-left\"></i></button> <button class=\"showcase-slider-next\" onclick=\"moveShowcaseSlide(1)\" type=\"button\" aria-label=\"Next slide\"><i class=\"ph-bold ph-caret-right\"></i></button></div></div><!-- Detail Modal --><div id=\"showcaseModal\" class=\"showcase-modal\" onclick=\"closeShowcaseModal()\"><span class=\"showcase-modal-close\" onclick=\"closeShowcaseModal()\">&times;</span><div class=\"showcase-modal-content\" onclick=\"event.stopPropagation()\"><img id=\"showcaseModalImg\" src=\"\" alt=\"Giấy chứng nhận / Quy trình\"><div id=\"showcaseModalCaption\" class=\"showcase-modal-caption\"></div></div></div><script>\n\t\t\t\t\t\t(function() {\n\t\t\t\t\t\t\tlet currentSlide = 0;\n\t\t\t\t\t\t\tconst totalSlides = 6;\n\t\t\t\t\t\t\tconst track = document.getElementById('showcaseSliderTrack');\n\t\t\t\t\t\t\tconst dots = document.querySelectorAll('#showcaseSliderDots .slider-dot');\n\t\t\t\t\t\t\tlet autoplayInterval;\n\n\t\t\t\t\t\t\tfunction updateSlider() {\n\t\t\t\t\t\t\t\tif (!track) return;\n\t\t\t\t\t\t\t\ttrack.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';\n\t\t\t\t\t\t\t\tdots.forEach((dot, index) => {\n\t\t\t\t\t\t\t\t\tif (index === currentSlide) {\n\t\t\t\t\t\t\t\t\t\tdot.classList.add('active');\n\t\t\t\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t\t\t\tdot.classList.remove('active');\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.setShowcaseSlide = function(index) {\n\t\t\t\t\t\t\t\tcurrentSlide = index;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t\tresetAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.moveShowcaseSlide = function(direction) {\n\t\t\t\t\t\t\t\tcurrentSlide = (currentSlide + direction + totalSlides) % totalSlides;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t\tresetAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction nextSlide() {\n\t\t\t\t\t\t\t\tcurrentSlide = (currentSlide + 1) % totalSlides;\n\t\t\t\t\t\t\t\tupdateSlider();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction startAutoplay() {\n\t\t\t\t\t\t\t\tautoplayInterval = setInterval(nextSlide, 3000);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tfunction resetAutoplay() {\n\t\t\t\t\t\t\t\tclearInterval(autoplayInterval);\n\t\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tconst container = document.getElementById('showcaseSliderContainer');\n\t\t\t\t\t\t\tif (container) {\n\t\t\t\t\t\t\t\tcontainer.addEventListener('mouseenter', () => clearInterval(autoplayInterval));\n\t\t\t\t\t\t\t\tcontainer.addEventListener('mouseleave', startAutoplay);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tconst modal = document.getElementById('showcaseModal');\n\t\t\t\t\t\t\tconst modalImg = document.getElementById('showcaseModalImg');\n\t\t\t\t\t\t\tconst modalCaption = document.getElementById('showcaseModalCaption');\n\n\t\t\t\t\t\t\twindow.openShowcaseModal = function(imgSrc, caption) {\n\t\t\t\t\t\t\t\tif (!modal || !modalImg || !modalCaption) return;\n\t\t\t\t\t\t\t\tmodalImg.src = imgSrc;\n\t\t\t\t\t\t\t\tmodalCaption.innerText = caption;\n\t\t\t\t\t\t\t\tmodal.classList.add('active');\n\t\t\t\t\t\t\t\tdocument.body.style.overflow = 'hidden';\n\t\t\t\t\t\t\t\tclearInterval(autoplayInterval);\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\twindow.closeShowcaseModal = function() {\n\t\t\t\t\t\t\t\tif (!modal) return;\n\t\t\t\t\t\t\t\tmodal.classList.remove('active');\n\t\t\t\t\t\t\t\tdocument.body.style.overflow = '';\n\t\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\tdocument.addEventListener('keydown', (e) => {\n\t\t\t\t\t\t\t\tif (e.key === 'Escape') {\n\t\t\t\t\t\t\t\t\tcloseShowcaseModal();\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t});\n\n\t\t\t\t\t\t\tstartAutoplay();\n\t\t\t\t\t\t})();\n\t\t\t\t\t</script></div></div></section><!-- Menu / Diverse Food Showcase Section --> <section id=\"menus\" class=\"section-padding bg-light\"><div class=\"container menu-tab-layout\"><div class=\"menu-header-flex\"><div class=\"menu-tab-left\"><h2>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var116 string
+			templ_7745c5c3_Var116, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 647, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var116))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 124, "<span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var117 string
+			templ_7745c5c3_Var117, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTitleSpan)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 647, Col: 48}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var117))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 125, "</span></h2><p style=\"color: var(--text-secondary);\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var118 string
+			templ_7745c5c3_Var118, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 648, Col: 59}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var118))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 126, "</p></div><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-zalo\" style=\"padding: 12px 24px; flex-shrink: 0;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var119 string
+			templ_7745c5c3_Var119, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuBtnZalo)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 661, Col: 21}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var119))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 127, "</a></div><div class=\"menu-tab-grid\"><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var120 string
+			templ_7745c5c3_Var120, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/khu-che-bien.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 667, Col: 71}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var120))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 128, "\" alt=\"Công nghiệp\"></div><div class=\"menu-card-title\"><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var121 string
+			templ_7745c5c3_Var121, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTab1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 670, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var121))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 129, "</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var122 string
+			templ_7745c5c3_Var122, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-mau.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 675, Col: 70}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var122))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 130, "\" alt=\"Văn phòng\"></div><div class=\"menu-card-title\"><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var123 string
+			templ_7745c5c3_Var123, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTab2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 678, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var123))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 131, "</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var124 string
+			templ_7745c5c3_Var124, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-cho-chuyen-gia.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 683, Col: 81}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var124))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 132, "\" alt=\"Chuyên gia\"></div><div class=\"menu-card-title\"><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var125 string
+			templ_7745c5c3_Var125, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTab3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 686, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var125))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 133, "</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var126 string
+			templ_7745c5c3_Var126, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-an-hoc-sinh.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 691, Col: 75}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var126))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 134, "\" alt=\"Trường học\"></div><div class=\"menu-card-title\"><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var127 string
+			templ_7745c5c3_Var127, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTab4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 694, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var127))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 135, "</h4></div></div><div class=\"menu-tab-card\"><div class=\"menu-card-img-wrapper\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var128 string
+			templ_7745c5c3_Var128, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/canteen-nha-may.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 699, Col: 74}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var128))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 136, "\" alt=\"Theo ca kíp\"></div><div class=\"menu-card-title\"><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var129 string
+			templ_7745c5c3_Var129, templ_7745c5c3_Err = templ.JoinStringErrs(t.MenuTab5)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 702, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var129))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 137, "</h4></div></div></div></div></section><!-- Testimonials Section --> <section id=\"testimonials\" class=\"section-padding\"><div class=\"container\"><div class=\"section-header\"><span class=\"badge-clean\"><i class=\"ph-fill ph-chat-circle-text\" style=\"font-size: 16px; color: var(--accent); margin-right: 6px;\"></i> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var130 string
+			templ_7745c5c3_Var130, templ_7745c5c3_Err = templ.JoinStringErrs(t.TestBadge)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 714, Col: 19}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var130))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 138, "</span><h2 class=\"section-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var131 string
+			templ_7745c5c3_Var131, templ_7745c5c3_Err = templ.JoinStringErrs(t.TestTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 716, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var131))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 139, "<span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var132 string
+			templ_7745c5c3_Var132, templ_7745c5c3_Err = templ.JoinStringErrs(t.TestTitleSpan)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 716, Col: 69}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var132))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 140, "</span></h2><p class=\"section-desc\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var133 string
+			templ_7745c5c3_Var133, templ_7745c5c3_Err = templ.JoinStringErrs(t.TestDesc)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 717, Col: 41}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var133))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 141, "</p></div><div class=\"testimonials-grid\"><!-- Card 1: Knauf Việt Nam --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var134 string
+			templ_7745c5c3_Var134, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test1Quote)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 729, Col: 49}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var134))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 142, "</p><div class=\"testimonial-user\"><div class=\"user-avatar-img\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var135 string
+			templ_7745c5c3_Var135, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/kh-1.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 732, Col: 64}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var135))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 143, "\" alt=\"Bà Nguyễn Thị Lan Anh\"></div><div class=\"user-info\"><h4 class=\"user-name\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var136 string
+			templ_7745c5c3_Var136, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test1User)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 735, Col: 43}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var136))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 144, "</h4><p class=\"user-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var137 string
+			templ_7745c5c3_Var137, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test1Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 736, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var137))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 145, "</p></div></div></div><!-- Card 2: Japanese Factory --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var138 string
+			templ_7745c5c3_Var138, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test2Quote)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 749, Col: 49}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var138))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 146, "</p><div class=\"testimonial-user\"><div class=\"user-avatar-initials blue\"><span>KS</span></div><div class=\"user-info\"><h4 class=\"user-name\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var139 string
+			templ_7745c5c3_Var139, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test2User)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 755, Col: 43}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var139))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 147, "</h4><p class=\"user-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var140 string
+			templ_7745c5c3_Var140, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test2Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 756, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var140))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 148, "</p></div></div></div><!-- Card 3: School --><div class=\"testimonial-card\"><div class=\"testimonial-stars\"><i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i> <i class=\"ph-fill ph-star\"></i></div><p class=\"testimonial-quote\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var141 string
+			templ_7745c5c3_Var141, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test3Quote)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 769, Col: 49}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var141))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 149, "</p><div class=\"testimonial-user\"><div class=\"user-avatar-initials green\"><span>LH</span></div><div class=\"user-info\"><h4 class=\"user-name\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var142 string
+			templ_7745c5c3_Var142, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test3User)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 775, Col: 43}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var142))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 150, "</h4><p class=\"user-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var143 string
+			templ_7745c5c3_Var143, templ_7745c5c3_Err = templ.JoinStringErrs(t.Test3Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 776, Col: 44}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var143))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 151, "</p></div></div></div></div></div></section><!-- Clients Section --> <section id=\"clients\" class=\"section-padding bg-light\" style=\"padding: 60px 0; border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03);\"><div class=\"container\"><div class=\"clients-logo-wrapper\"><p class=\"clients-section-subtitle\" aria-label=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var144 string
+			templ_7745c5c3_Var144, templ_7745c5c3_Err = templ.JoinStringErrs(t.ClientsTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 787, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var144))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 152, "\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var145 string
+			templ_7745c5c3_Var145, templ_7745c5c3_Err = templ.JoinStringErrs(t.ClientsTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 787, Col: 87}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var145))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 153, "</p><div class=\"clients-logo-grid\"><div class=\"client-logo-item\"><span class=\"client-logo-text bold\">KNAUF</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text serif\">LOTTE</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text spacer\">DENSO</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text round\">KIZUNA</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text modern\">Panasonic</span></div><div class=\"client-logo-item\"><span class=\"client-logo-text bold italic\">CJ</span></div></div></div></div></section><!-- Commitments & FAQ Section --> <section class=\"section-padding\"><div class=\"container faq-grid\"><!-- Left: Commitments --><div><h3 class=\"commit-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var146 string
+			templ_7745c5c3_Var146, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 816, Col: 45}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var146))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 154, "</h3><div class=\"commit-list\"><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var147 string
+			templ_7745c5c3_Var147, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 820, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var147))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 155, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var148 string
+			templ_7745c5c3_Var148, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 824, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var148))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 156, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var149 string
+			templ_7745c5c3_Var149, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 828, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var149))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 157, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var150 string
+			templ_7745c5c3_Var150, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 832, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var150))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 158, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var151 string
+			templ_7745c5c3_Var151, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem5)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 836, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var151))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 159, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var152 string
+			templ_7745c5c3_Var152, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem6)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 840, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var152))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 160, "</p></div><div class=\"commit-item\"><span class=\"commit-icon\"><i class=\"ph-bold ph-check\"></i></span><p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var153 string
+			templ_7745c5c3_Var153, templ_7745c5c3_Err = templ.JoinStringErrs(t.CommitItem7)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 844, Col: 25}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var153))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 161, "</p></div></div></div><!-- Right: Accordion FAQ --><div><h3 class=\"commit-title\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var154 string
+			templ_7745c5c3_Var154, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 850, Col: 42}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var154))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 162, "</h3><div class=\"faq-accordion\"><details class=\"faq-item\" open><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var155 string
+			templ_7745c5c3_Var155, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 853, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var155))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 163, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var156 string
+			templ_7745c5c3_Var156, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA1)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 854, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var156))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 164, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var157 string
+			templ_7745c5c3_Var157, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 857, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var157))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 165, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var158 string
+			templ_7745c5c3_Var158, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA2)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 858, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var158))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 166, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var159 string
+			templ_7745c5c3_Var159, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 861, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var159))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 167, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var160 string
+			templ_7745c5c3_Var160, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA3)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 862, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var160))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 168, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var161 string
+			templ_7745c5c3_Var161, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 865, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var161))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 169, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var162 string
+			templ_7745c5c3_Var162, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA4)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 866, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var162))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 170, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var163 string
+			templ_7745c5c3_Var163, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ5)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 869, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var163))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 171, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var164 string
+			templ_7745c5c3_Var164, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA5)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 870, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var164))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 172, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var165 string
+			templ_7745c5c3_Var165, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ6)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 873, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var165))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 173, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var166 string
+			templ_7745c5c3_Var166, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA6)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 874, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var166))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 174, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var167 string
+			templ_7745c5c3_Var167, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ7)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 877, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var167))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 175, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var168 string
+			templ_7745c5c3_Var168, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA7)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 878, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var168))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 176, "</div></details> <details class=\"faq-item\"><summary class=\"faq-question\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var169 string
+			templ_7745c5c3_Var169, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqQ8)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 881, Col: 46}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var169))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 177, "</summary><div class=\"faq-answer\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var170 string
+			templ_7745c5c3_Var170, templ_7745c5c3_Err = templ.JoinStringErrs(t.FaqA8)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 882, Col: 40}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var170))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 178, "</div></details></div></div></div></section><!-- CTA Bottom Banner --> <section id=\"contact\" style=\"margin-top: 0;\"><div class=\"chef-banner\"><div class=\"chef-banner-food\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var171 string
+			templ_7745c5c3_Var171, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/suat-com-mau-elements.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 892, Col: 78}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var171))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 179, "\" alt=\"Suất ăn Agape Food\"></div><div class=\"chef-banner-content\"><h2>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var172 string
+			templ_7745c5c3_Var172, templ_7745c5c3_Err = templ.JoinStringErrs(t.CtaBannerTitle)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 895, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var172))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 180, "</h2><div class=\"chef-banner-btns\"><a href=\"https://zalo.me/0586758758\" target=\"_blank\" class=\"btn-banner-zalo\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 50 50\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.782 0.166016H27.199C33.2653 0.166016 36.8103 1.05701 39.9572 2.74421C43.1041 4.4314 45.5875 6.89585 47.2557 10.0428C48.9429 13.1897 49.8339 16.7347 49.8339 22.801V27.1991C49.8339 33.2654 48.9429 36.8104 47.2557 39.9573C45.5685 43.1042 43.1041 45.5877 39.9572 47.2559C36.8103 48.9431 33.2653 49.8341 27.199 49.8341H22.8009C16.7346 49.8341 13.1896 48.9431 10.0427 47.2559C6.89583 45.5687 4.41243 43.1042 2.7442 39.9573C1.057 36.8104 0.166016 33.2654 0.166016 27.1991V22.801C0.166016 16.7347 1.057 13.1897 2.7442 10.0428C4.43139 6.89585 6.89583 4.41245 10.0427 2.74421C13.1707 1.05701 16.7346 0.166016 22.782 0.166016Z\" fill=\"#0068FF\"></path> <path opacity=\"0.12\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M49.8336 26.4736V27.1994C49.8336 33.2657 48.9427 36.8107 47.2555 39.9576C45.5683 43.1045 43.1038 45.5879 39.9569 47.2562C36.81 48.9434 33.265 49.8344 27.1987 49.8344H22.8007C17.8369 49.8344 14.5612 49.2378 11.8104 48.0966L7.27539 43.4267L49.8336 26.4736Z\" fill=\"#001A33\"></path> <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M7.779 43.5892C10.1019 43.846 13.0061 43.1836 15.0682 42.1825C24.0225 47.1318 38.0197 46.8954 46.4923 41.4732C46.8209 40.9803 47.1279 40.4677 47.4128 39.9363C49.1062 36.7779 50.0004 33.22 50.0004 27.1316V22.7175C50.0004 16.629 49.1062 13.0711 47.4128 9.91273C45.7385 6.75436 43.2461 4.28093 40.0877 2.58758C36.9293 0.894239 33.3714 0 27.283 0H22.8499C17.6644 0 14.2982 0.652754 11.4699 1.89893C11.3153 2.03737 11.1636 2.17818 11.0151 2.32135C2.71734 10.3203 2.08658 27.6593 9.12279 37.0782C9.13064 37.0921 9.13933 37.1061 9.14889 37.1203C10.2334 38.7185 9.18694 41.5154 7.55068 43.1516C7.28431 43.399 7.37944 43.5512 7.779 43.5892Z\" fill=\"white\"></path> <path d=\"M20.5632 17H10.8382V19.0853H17.5869L10.9329 27.3317C10.7244 27.635 10.5728 27.9194 10.5728 28.5639V29.0947H19.748C20.203 29.0947 20.5822 28.7156 20.5822 28.2606V27.1421H13.4922L19.748 19.2938C19.8428 19.1801 20.0134 18.9716 20.0893 18.8768L20.1272 18.8199C20.4874 18.2891 20.5632 17.8341 20.5632 17.2844V17Z\" fill=\"#0068FF\"></path> <path d=\"M32.9416 29.0947H34.3255V17H32.2402V28.3933C32.2402 28.7725 32.5435 29.0947 32.9416 29.0947Z\" fill=\"#0068FF\"></path> <path d=\"M25.814 19.6924C23.1979 19.6924 21.0747 21.8156 21.0747 24.4317C21.0747 27.0478 23.1979 29.171 25.814 29.171C28.4301 29.171 30.5533 27.0478 30.5533 24.4317C30.5723 21.8156 28.4491 19.6924 25.814 19.6924ZM25.814 27.2184C24.2785 27.2184 23.0273 25.9672 23.0273 24.4317C23.0273 22.8962 24.2785 21.645 25.814 21.645C27.3495 21.645 28.6007 22.8962 28.6007 24.4317C28.6007 25.9669 27.3685 27.2184 25.814 27.2184Z\" fill=\"#0068FF\"></path> <path d=\"M40.4867 19.6162C37.8516 19.6162 35.7095 21.7584 35.7095 24.3934C35.7095 27.0285 37.8516 29.1707 40.4867 29.1707C43.1217 29.1707 45.2639 27.0285 45.2639 24.3934C45.2639 21.7584 43.1217 19.6162 40.4867 19.6162ZM40.4867 27.2181C38.9322 27.2181 37.681 25.9669 37.681 24.4124C37.681 22.8579 38.9322 21.6067 40.4867 21.6067C42.0412 21.6067 43.2924 22.8579 43.2924 24.4124C43.2924 25.9669 42.0412 27.2181 40.4867 27.2181Z\" fill=\"#0068FF\"></path> <path d=\"M29.4562 29.0944H30.5747V19.957H28.6221V28.2793C28.6221 28.7153 29.0012 29.0944 29.4562 29.0944Z\" fill=\"#0068FF\"></path></svg> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var173 string
+			templ_7745c5c3_Var173, templ_7745c5c3_Err = templ.JoinStringErrs(t.CtaBannerBtnZalo)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 908, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var173))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 181, "</a> <a href=\"tel:0586758758\" class=\"btn-banner-call\"><i class=\"ph-bold ph-phone\" style=\"font-size: 18px;\"></i> ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var174 string
+			templ_7745c5c3_Var174, templ_7745c5c3_Err = templ.JoinStringErrs(t.CtaBannerBtnCall)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 912, Col: 27}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var174))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 182, "</a></div></div><div class=\"chef-banner-img\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var175 string
+			templ_7745c5c3_Var175, templ_7745c5c3_Err = templ.JoinStringErrs(templates.AssetURL("/static/images/cheefs.png"))
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/index.templ`, Line: 917, Col: 63}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var175))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 183, "\" alt=\"Đầu bếp Agape Food chuyên nghiệp\"></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = layouts.Layout("Agape Food | Suất Ăn Công Nghiệp Long An – An Toàn, Đầy Đủ Hồ Sơ ATTP").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = layouts.Layout(t.MetaTitle, lang).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
